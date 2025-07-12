@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="itinerarybuilder.css">
+</head>
+<body>
+    <h1><span class="heading" >Itinerary Builder</span></h1>
+    <h2><span class="que">First,where do you want to go?</span></h2>
+    <select name="select location" id="location">
+        <option value="select">Select</option>  
+        <option value="jhapa">Jhapa</option>
+        <option value="kathmandu">Kathmandu</option>
+        <option value="bharatpur">Bharatpur</option>    
+    </select>
+
+<button onclick="showmessage()">Build Initerary</button>
+
+<label for="groupSize" id="num">Number of traveler(s):</label>
+<input type="number" id="groupSize" name="groupSize" min="1" placeholder="Empty=Solo Traveler" />
+
+<script>
+  function showmessage() {
+    const Location = document.getElementById("location").value;
+    const groupSize = parseInt(document.getElementById("groupSize").value);
+
+    if(Location === "jhapa") {
+      document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Settling In</p>
+  <ul>
+    <li>Arrive via Chandragadhi Airport or Birtamode bus terminal</li>
+    <li>Check in to a local hotel or homestay</li>
+    <li>Evening walk around Birtamode Bazaar</li>
+    <li>Dinner at a quiet local restaurant</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Tea & Tranquility</p>
+  <ul>
+    <li>Travel to Kanyam Tea Garden</li>
+    <li>Solo walk through tea fields</li>
+    <li>Visit nearby viewpoints for photos</li>
+    <li>Overnight at a tea-themed lodge or homestay</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Ilam Culture Day</p>
+  <ul>
+    <li>Explore Ilam Bazaar and local produce markets</li>
+    <li>Visit Mai Pokhari (holy pond surrounded by forest)</li>
+    <li>Try local food: sukuti, churpi, etc.</li>
+    <li>Evening tea at a scenic café</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Antu Danda Sunrise</p>
+  <ul>
+    <li>Pre-dawn hike or drive to Antu Danda for sunrise</li>
+    <li>Solo meditation or journaling on the ridge</li>
+    <li>Picnic breakfast</li>
+    <li>Return to Birtamode in the afternoon</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Rural Life & Homestay</p>
+  <ul>
+    <li>Travel to Bahundangi village</li>
+    <li>Experience local farming and community cooking</li>
+    <li>Homestay with local family</li>
+    <li>Evening storytelling or cultural talk</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Spiritual & Local Sites</p>
+  <ul>
+    <li>Visit Arjundhara Temple and nearby religious sites</li>
+    <li>Light hike around Damak hills</li>
+    <li>Cafe time and relaxing afternoon</li>
+    <li>Dinner with a view in a rooftop restaurant</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Wrap-Up</p>
+  <ul>
+    <li>Last-minute souvenir shopping</li>
+    <li>Morning walk or revisit a favorite tea spot</li>
+    <li>Pack and transfer to airport or bus park</li>
+    <li>Farewell local snack: sel roti or chiya combo</li>
+  </ul>
+`;
+
+    } else if(Location === "kathmandu") {
+      document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Settling In</p>
+  <ul>
+    <li>Arrive in Kathmandu</li>
+    <li>Transfer to hotel in Thamel</li>
+    <li>Light exploration around Thamel: cafés, handicraft shops, bookstores</li>
+    <li>Optional: Attend a live Nepali music show in the evening (Purple Haze, House of Music, etc.)</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Cultural Immersion</p>
+  <ul>
+    <li>Breakfast at a local spot (e.g., OR2K, Pumpernickel)</li>
+    <li>Visit Swayambhunath (Monkey Temple) – great for sunrise or early morning</li>
+    <li>Explore Kathmandu Durbar Square</li>
+    <li>Walk through Asan Bazaar (old local market)</li>
+    <li>Lunch in Patan area or back in Thamel</li>
+    <li>Optional evening activity: traditional Nepali dinner with dance performance (e.g., Bhojan Griha)</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Temples & Spiritual Day</p>
+  <ul>
+    <li>Early visit to Pashupatinath Temple (Hindu rituals, cremation ghats)</li>
+    <li>Continue to Boudhanath Stupa — ideal for solo meditation or group kora (walk around the stupa)</li>
+    <li>Eat at a Tibetan restaurant nearby (e.g., Garden Kitchen, Stupa View Café)</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Day Trip / Nature Exploration</p>
+  <ul>
+    <li>Option A: Hike to Nagarkot (sunrise view, light trek from Sankhu)</li>
+    <li>Option B: Bhaktapur Day Trip (UNESCO city, pottery, temples)</li>
+    <li>Dinner back in Kathmandu</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Local Experiences</p>
+  <ul>
+    <li>Take a cooking class (learn momos, dal bhat)</li>
+    <li>Explore Garden of Dreams for relaxation</li>
+    <li>Souvenir shopping (Thamel, Patan, or Boudha)</li>
+    <li>Optional: Spa or massage (Himalayan Ayurvedic options available)</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Rest Day</p>
+  <ul>
+    <li>Great day for a group bonding hike or solo recharge time</li>
+    <li>Chill café evening or pub night in Thamel</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Wrap-Up</p>
+  <ul>
+    <li>Morning: Free time for journaling, last-minute shopping</li>
+    <li>Visit a nearby viewpoint or temple if you have time (e.g., White Gumba)</li>
+    <li>Check out, transfer to airport</li>
+    <li>Farewell snack: Newari food tasting or local sweets (sel roti, yomari)</li>
+  </ul>
+`;
+    }
+    else if(Location === "bharatpur") {
+      document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Riverside Calm</p>
+  <ul>
+    <li>Arrive via Bharatpur Airport or bus from Kathmandu/Pokhara</li>
+    <li>Settle into a solo-friendly guesthouse near Narayani River</li>
+    <li>Evening riverside walk at Devghat</li>
+    <li>Dinner at a quiet local eatery</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Nature & Birds</p>
+  <ul>
+    <li>Morning birdwatching at Bishazari Tal (20,000 lakes)</li>
+    <li>Solo nature photography session</li>
+    <li>Lunch at lakeside dhaba</li>
+    <li>Evening journaling or café visit</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Chitwan National Park</p>
+  <ul>
+    <li>Join a shared jungle walk with a guide</li>
+    <li>Optional canoe ride on Rapti River</li>
+    <li>Visit Elephant Breeding Center</li>
+    <li>Sunset view from Rapti riverside with binoculars</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Devghat Exploration</p>
+  <ul>
+    <li>Solo morning hike around Devghat holy area</li>
+    <li>Explore ashrams, temples, and caves</li>
+    <li>Try sattvic food at a local temple kitchen (if open)</li>
+    <li>Return to Bharatpur town for evening</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Local Life & Art</p>
+  <ul>
+    <li>Visit Narayangarh Market for solo street photography</li>
+    <li>Explore art at local museums or culture centers</li>
+    <li>Try traditional Tharu lunch</li>
+    <li>Evening walk at Shantiban Peace Garden</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Food & Relaxation</p>
+  <ul>
+    <li>Join a Nepali cooking class (if available)</li>
+    <li>Massage or spa time (Ayurvedic treatments recommended)</li>
+    <li>Visit a library or solo reading café</li>
+    <li>Quiet dinner at rooftop restaurant</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Wrap-Up</p>
+  <ul>
+    <li>Pack and prepare for departure</li>
+    <li>Last riverside stroll or meditation time</li>
+    <li>Try local sweets (e.g., khuwa, peda)</li>
+    <li>Transfer to bus station or airport</li>
+  </ul>
+`;
+
+    }
+    else{
+      document.getElementById("message").innerHTML = "please select the location of travel";
+    }
+  }
+</script>
+  <span id="message">
+    
+  </span>
+</body>
+</html>

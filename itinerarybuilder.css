@@ -1,0 +1,70 @@
+.heading{
+    background-color: rgb(174, 255, 0);
+    border-radius: 15px; 
+    margin: 20px;
+}
+.que{
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    font-size: xx-large;
+    margin-left: 250px;
+}
+#location{
+    margin-top: 290px;
+    margin-left: 450px;
+    padding-right: 500px;
+    padding-top:2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+
+}
+#location option{
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+button {
+  background-color: rgb(174, 255, 0);  
+  color: black;             
+  font-size: 16px;
+  position:absolute;
+  top: 600px;
+  left: 670px;      
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#num{
+    position: absolute;
+    left: 650px;
+    top: 450px;
+    font-size: large;
+
+}
+#groupSize{
+    position: absolute;
+    left: 625px;
+    top: 500px;
+    font-size: large;
+}
+#message{
+    position:absolute;
+    top: 900px;
+    left:500px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    border-radius: 5px;
+    background-color: rgb(174, 255, 0);
+    margin: 20px;
+    padding: 2px;
+    font-style: oblique;
+    font-family:'Times New Roman', Times, serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.outputfont{
+    color: black;
+    font: bold;
+}
