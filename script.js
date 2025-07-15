@@ -44,17 +44,6 @@ const toggleFavorite = (id, iconElement) => {
   localStorage.setItem('favoriteDestinations', JSON.stringify(favorites));
 };
 
-// Trip cost calculation
-const calculateTripCost = () => {
-  const days = Number(document.getElementById('days')?.value) || 0;
-  const dailyCost = Number(document.getElementById('dailyCost')?.value) || 0;
-  const total = days * dailyCost;
-  const output = document.getElementById('totalCost');
-  if (output) {
-    output.innerText = `Total Trip Cost: $${total.toFixed(2)}`;
-  }
-};
-
 // Scroll progress bar only (no scroll-to-top button)
 window.addEventListener('scroll', () => {
   const scroll = document.documentElement.scrollTop;
