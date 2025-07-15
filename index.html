@@ -44,7 +44,7 @@
   <ul class="dropdown-menu">
     <li><a href="#itinerary-builder">Itinerary Builder</a></li>
     <li><a href="#budget-tracker">Budget and Expense Tracker</a></li>
-    <li><a href="#travel">Travel</a></li>
+    <li><a href="#travel-notes">Travel Notes/Journal</a></li>
     <li><a href="#travel-stats">Travel Stats</a></li>
   </ul>
 </li>
@@ -59,6 +59,21 @@
       <button class="dark-toggle" onclick="toggleDarkMode()">
         <i data-lucide="moon"></i>
       </button>
+      
+      <!-- Profile Menu -->
+      <div class="profile-menu">
+        <button class="profile-toggle" onclick="toggleProfileMenu()">☰</button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-item" onclick="showProfile()">
+            <i data-lucide="user"></i>
+            <span>Profile</span>
+          </div>
+          <div class="profile-item" id="logout-btn">
+            <i data-lucide="log-out"></i>
+            <span>Logout</span>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -78,9 +93,9 @@
       <div class="hero-overlay">
         <h1>Your Adventure Starts Here</h1>
         <p>Plan your dream trip with us today!</p>
-        <div class="dropdown">
-          <select name="dropdown-destinations" id="dropdown">
-            <option value="">Choose a destination</option>
+        <div class="destination-search">
+          <select name="dropdown-destinations" id="dropdown" class="destination-dropdown">
+            <option value="">🔍 Choose your destination...</option>
             <option value="kathmandu-valley">Kathmandu Valley</option>
             <option value="pokhara">Pokhara</option>
             <option value="chitwan">Chitwan</option>
@@ -88,17 +103,7 @@
             <option value="everest-region">Everest Region</option>
             <option value="annapurna-region">Annapurna Region</option>
             <option value="others">Other Popular Destinations</option>
-
           </select>
-          <!-- <input type="text" class="textbox" placeholder="Dropdown menu" readonly />
-          <div class="option">
-            <div onclick="show('Kathmandu')">Kathmandu</div>
-            <div onclick="show('Bhaktapur')">Bhaktapur</div>
-            <div onclick="show('Lalitpur')">Lalitpur</div>
-            <div onclick="show('Pokhara')">Pokhara</div>
-            <div onclick="show('Mustang')">Mustang</div>
-            <div onclick="show('Annapurna Base Camp')">Annapurna Base Camp</div>
-          </div> -->
         </div>
 
       </div>
@@ -207,18 +212,6 @@
     function show(value) {
       document.querySelector('.textbox').value = value;
     }
-
-    const dropdown = document.querySelector('.dropdown');
-    dropdown.addEventListener('click', () => {
-      dropdown.classList.toggle('active');
-    });
-
-    // Optional: Close dropdown when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
   </script>
 </body>
 
