@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Trip Planner - Itinerary Builder</title>
+    <link rel="stylesheet" href="itinerary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Trip planner</h1>
+            <p>"यात्रा केवल गन्तव्यसम्म होइन, आत्मासम्मको संवाद हो।"</p>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" placeholder="Search destinations, activities, or packages..." aria-label="Search for destinations or activities">
+                <button type="button">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="itinerary-builder">
+        <div class="container">
+            <h2>Build Your Itinerary</h2>
+            <div class="itinerary-form">
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <select id="destination" aria-label="Select destination">
+                        <option value="">Select a Destination</option>
+                        <option value="kathmandu">Kathmandu</option>
+                        <option value="pokhara">Pokhara</option>
+                        <option value="chitwan">Chitwan</option>
+                        <option value="lumbini">Lumbini</option>
+                        <option value="everest">Everest Region</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Travel Date</label>
+                    <input type="date" id="date" aria-label="Select travel date">
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (Days)</label>
+                    <input type="number" id="duration" min="1" max="30" placeholder="e.g., 5" aria-label="Enter trip duration">
+                </div>
+                <div class="form-group">
+                    <label for="activities">Activities</label>
+                    <select id="activities" multiple aria-label="Select activities">
+                        <option value="trekking">Trekking</option>
+                        <option value="sightseeing">Sightseeing</option>
+                        <option value="cultural">Cultural Tours</option>
+                        <option value="adventure">Adventure Sports</option>
+                        <option value="wildlife">Wildlife Safari</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="number">No of travellers</label>
+                    <input type="number" id="numer" min="1" max="15" placeholder="e.g., 5" aria-label="Enter no of travellers">
+                </div>
+                <button type="button" class="add-to-itinerary">Add to Itinerary</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="itinerary-preview">
+        <div class="container">
+            <h2>Your Itinerary</h2>
+            <div class="itinerary-list">
+                <p>Your planned trip will appear here...</p>
+            </div>
+            <button type="button" class="save-itinerary">Save Itinerary</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Trip planner. All rights reserved.</p>
+            <p>Contact us at <a href="mailto:info@tripplanner.com">info@tripplanner.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
