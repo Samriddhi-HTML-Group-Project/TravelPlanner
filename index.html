@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Trip Planner - Budget & Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Trip planner</h1>
+            <p>"Let the Mountains Move You — Not Your Budget."</p>
+        </div>
+    </header>
+
+    <section class="budget-tracker">
+        <div class="container">
+            <h2>Your Budget</h2>
+            <div class="budget-form">
+                <div class="form-group">
+                    <label for="total-budget">Total Budget (NPR)</label>
+                    <input type="number" id="total-budget" placeholder="e.g., 50000" aria-label="Enter total budget">
+                </div>
+                <div class="form-group">
+                    <label for="trip-duration">Trip Duration (Days)</label>
+                    <input type="number" id="trip-duration" min="1" max="30" placeholder="e.g., 7" aria-label="Enter trip duration">
+                </div>
+                <button type="button" class="set-budget">Set Budget</button>
+            </div>
+            <div class="budget-summary">
+                <p>Remaining Budget: <span id="remaining-budget">0 NPR</span></p>
+                <p>Daily Allowance: <span id="daily-allowance">0 NPR</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="expense-tracker">
+        <div class="container">
+            <h2>Track Your Expenses</h2>
+            <div class="expense-form">
+                <div class="form-group">
+                    <label for="expense-category">Category</label>
+                    <select id="expense-category" aria-label="Select expense category">
+                        <option value="">Select Category</option>
+                        <option value="food">Food</option>
+                        <option value="transport">Transport</option>
+                        <option value="accommodation">Accommodation</option>
+                        <option value="activities">Activities</option>
+                        <option value="misc">Miscellaneous</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="expense-amount">Amount (NPR)</label>
+                    <input type="number" id="expense-amount" placeholder="e.g., 2000" aria-label="Enter expense amount">
+                </div>
+                <button type="button" class="add-expense">Add Expense</button>
+            </div>
+            <div class="expense-list">
+                <h3>Expense History</h3>
+                <ul id="expense-history">
+                    <li>No expenses recorded yet...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Trip planner. All rights reserved.</p>
+            <p>Contact us at <a href="mailto:info@tripplanner.com">info@tripplanner.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
