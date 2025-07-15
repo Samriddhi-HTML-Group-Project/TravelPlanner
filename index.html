@@ -2,158 +2,199 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Planner</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+  
 </head>
 
-<body class="bg-white text-gray-800">
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center px-8 py-4 bg-white shadow-md">
-    <img src="/assects/Logo.png" alt="Trip Planner" class="trip_image">
-    <ul class="flex space-x-6 font-medium">
-      <li><a href="#" class="hover:text-blue-600">Home</a></li>
-      <li><a href="#destinations" class="hover:text-blue-600">Destinations</a></li>
-      <li><a href="#about" class="hover:text-blue-600">About</a></li>
-      <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+  <nav>
+    <div class="logo"><img src="/assects/Logo.png" height="100" width="110" alt="Logo"></div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-right">
+      <button class="login-btn" onclick="openModal()">Login</button>
+      <button class="dark-toggle" onclick="toggleDarkMode()">
+        <i data-lucide="moon"></i>
+      </button>
+    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 bg-gradient-to-r from-blue-100 to-blue-200">
-    <h2 class="text-4xl font-bold mb-4">Every Great Journey Begins With a Great Plan.</h2>
-    <p class="text-lg mb-6">Discover, plan, and go on adventures effortlessly with Trip Planner.</p>
+  <!-- Hero Section with Slider -->
+  <section id="home" class="hero">
+    <div class="slider-container">
+      <div class="slide fade">
+        <img src="/assects/slide1.jpg" alt="Slide 1">
+      </div>
+      <div class="slide fade">
+        <img src="/assects/slide2.jpg" alt="Slide 2">
+      </div>
+      <div class="slide fade">
+        <img src="/assects/slide3.jpg" alt="Slide 3">
+      </div>
+
+      <div class="hero-overlay">
+        <h1>Your Adventure Starts Here</h1>
+        <p>Plan your dream trip with us today!</p>
+        <div class="dropdown">
+          <input type="text" class="textbox" placeholder="Dropdown menu" readonly />
+          <div class="option">
+            <div onclick="show('Kathmandu')">Kathmandu</div>
+            <div onclick="show('Bhaktapur')">Bhaktapur</div>
+            <div onclick="show('Lalitpur')">Lalitpur</div>
+            <div onclick="show('Pokhara')">Pokhara</div>
+            <div onclick="show('Mustang')">Mustang</div>
+            <div onclick="show('Annapurna Base Camp')">Annapurna Base Camp</div>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
 
   </section>
 
-  <!-- Featured Destinations -->
-  <section id="destinations" class="py-16 px-8 bg-gray-50">
-    <h3 class="text-3xl font-bold text-center mb-12">Featured Destinations</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Destination Card -->
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/Kathmandu.jpg" alt="Kathmandu" class="w-full">
-        <div class="destinatiom">
-          <h4 class="font-semibold">Kathmandu, Nepal</h4>
-          <p class="text-gray-600">The city of lights, romance, and endless exploration.</p>
-          <p>.</p>
-          <p>.</p>
-        </div>
+
+  <!-- Destinations -->
+  <section id="destinations" class="section" data-aos="fade-up">
+    <h2>Featured Destinations</h2>
+
+    <div class="grid">
+      <div class="card" data-id="kathmandu">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/Kathmandu.jpg" alt="Kathmandu">
+        <h3>Kathmandu, Nepal</h3>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/Bhaktapur1.jpg" alt="Bhaktapur" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Bhaktapur, Nepal</h4>
-          <p class="text-gray-600">Tropical beaches, temples, and vibrant culture await.</p>
-        </div>
+      <div class="card" data-id="lalitpur">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/lalitpur3.jpg" alt="Lalitpur">
+        <h3>Lalitpur, Nepal</h3>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/lalitpur3.jpg" alt="Lalitpur" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Lalitpur, Nepal</h4>
-          <p class="text-gray-600">From Times Square to Central Park – explore the big city.</p>
-
-
-
-        </div>
+      <div class="card" data-id="bhaktapur">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/Bhaktapur1.jpg" alt="Bhaktapur">
+        <h3>Bhaktapur, Nepal</h3>
       </div>
     </div>
-    </div>
-  </section>
-  <!-- Featured Destinations -->
-  <section id="destinations" class="py-16 px-8 bg-gray-50">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Destination Card -->
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/Dhorpatan.webp" alt="Dhorpatan" class="w-full">
-        <div class="destinatiom">
-          <h4 class="text-xl font-semibold">Dhorpatan, Nepal</h4>
-          <p class="text-gray-600">The city of lights, romance, and endless exploration.</p>
-          <p>.</p>
-        </div>
+    <div class="grid">
+      <div class="card" data-id="dhorpatan">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/Dhorpatan.webp" alt="Dhorpatan">
+        <h3>Dhorpatan, Nepal</h3>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/lumbani1.jpg" alt="Lumbani" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Lumbani, Nepal</h4>
-          <p class="text-gray-600">Tropical beaches, temples, and vibrant culture await.</p>
-        </div>
+      <div class="card" data-id="lumbini">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/lumbani 2.jpg" alt="Lumbini">
+        <h3>Lumbini, Nepal</h3>
       </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/pokhara1.webp" alt="pokhara1" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Pokhara, Nepal</h4>
-          <p class="text-gray-600">From Times Square to Central Park – explore the big city.</p>
-
-
-
-
-        </div>
+      <div class="card" data-id="pokhara">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/pokhara1.webp" alt="Pokhara">
+        <h3>Pokhara, Nepal</h3>
       </div>
     </div>
-    </div>
-  </section>
-  <!-- Featured Destinations -->
-  <section id="destinations" class="py-16 px-8 bg-gray-50">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Destination Card -->
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/annapurna-base-camp-trek-2.jpg" alt="annapurna-base-camp-trek-2" class="w-full">
-        <div class="destinatiom">
-          <h4 class="text-xl font-semibold">Annapurna Base Camp, Nepal</h4>
-          <p class="text-gray-600">The city of lights, romance, and endless exploration.</p>
-          <p> .</p>
-          <p>. </p>
-        </div>
-      </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/mustang.jpg" alt="mustang" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Mustang Nepal</h4>
-          <p class="text-gray-600">Tropical beaches, temples, and vibrant culture await.</p>
-        </div>
-      </div>
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
-        <img src="/assects/langtang.webp" alt="langtang" class="w-full">
-        <div class="destination">
-          <h4 class="text-xl font-semibold">Langtang, Nepal</h4>
-          <p class="text-gray-600">From Times Square to Central Park – explore the big city.</p>
 
-
-
-        </div>
+    <div class="grid">
+      <div class="card" data-id="annapurna">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/annapurna-base-camp-trek-2.jpg" alt="Annapurna">
+        <h3>Annapurna Base Camp, Nepal</h3>
       </div>
-    </div>
+      <div class="card" data-id="mustang">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/mustang.jpg" alt="Mustang">
+        <h3>Mustang, Nepal</h3>
+      </div>
+      <div class="card" data-id="langtang">
+        <div class="favorite-icon">♡</div>
+        <img src="/assects/langtang.webp" alt="Langtang">
+        <h3>Langtang, Nepal</h3>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 px-8">
-    <h3 class="text-3xl font-bold text-center mb-8">About TripPlanner</h3>
-    <div class="max-w-3xl mx-auto text-center text-gray-700">
-      <p>TripPlanner is your smart travel companion. Whether you're planning a solo adventure, a family vacation, or a
-        romantic escape, we provide tools and tips to help you plan effortlessly and travel stress-free. Our goal is to
-        make travel accessible, fun, and unforgettable for everyone.</p>
-    </div>
+  <!-- About -->
+  <section id="about" class="section light" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>We help travelers plan unforgettable journeys with curated experiences, local tips, and stress-free itineraries.
+    </p>
   </section>
 
-  <!-- Contact / Footer -->
-  <footer id="contact" class="bg-blue-600 text-white py-10">
-    <!-- bg=setbackground colour to darkblue  py=padding on yaxis text-white=sets the text color to white -->
-    <div class="text-center">
-      <h4 class="text-2xl font-bold mb-4">Get in Touch</h4>
-      <!-- text-2xl = makes the text larger  mb-4: adds bottom margin -->
-      <p>Email: tripplanner990@gmail.com</p>
-      <p>Phone: (+977)9821271981</p>
-      <p class="mt-4">&copy; 2025 TripPlanner. All rights reserved.</p>
-      <!-- mt-4: adds margin on top to separate this from the content above. -->
-    </div>
+  <!-- Contact -->
+  <footer id="contact" class="footer" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <p><i data-lucide="mail"></i> support@tripplanner.com</p>
+    <p><i data-lucide="phone"></i> +977-123456789</p>
   </footer>
 
+
+  <!-- External Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    lucide.createIcons();
+
+    // Hero Slider Script
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 4000); // 4 seconds
+    }
+  </script>
+  <script src="script.js"></script>
+  <script>
+    function show(value) {
+      document.querySelector('.textbox').value = value;
+    }
+
+    const dropdown = document.querySelector('.dropdown');
+    dropdown.addEventListener('click', () => {
+      dropdown.classList.toggle('active');
+    });
+
+    // Optional: Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 
 </html>
