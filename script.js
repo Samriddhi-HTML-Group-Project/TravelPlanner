@@ -4,24 +4,24 @@ const toggleMenu = () => {
   navLinks?.classList.toggle('active');
 };
 
-// Modal open/close
-const openModal = () => {
-  const modal = document.getElementById('loginModal');
-  if (modal) modal.style.display = 'flex';
-};
+// // Modal open/close
+// const openModal = () => {
+//   const modal = document.getElementById('loginModal');
+//   if (modal) modal.style.display = 'flex';
+// };
 
-const closeModal = () => {
-  const modal = document.getElementById('loginModal');
-  if (modal) modal.style.display = 'none';
-};
+// const closeModal = () => {
+//   const modal = document.getElementById('loginModal');
+//   if (modal) modal.style.display = 'none';
+// };
 
-// Close modal when clicking outside modal content
-window.addEventListener('click', (event) => {
-  const modal = document.getElementById('loginModal');
-  if (modal && event.target === modal) {
-    modal.style.display = 'none';
-  }
-});
+// // Close modal when clicking outside modal content
+// window.addEventListener('click', (event) => {
+//   const modal = document.getElementById('loginModal');
+//   if (modal && event.target === modal) {
+//     modal.style.display = 'none';
+//   }
+// });
 
 // Dark Mode Toggle
 const toggleDarkMode = () => {
@@ -44,34 +44,34 @@ const toggleFavorite = (id, iconElement) => {
   localStorage.setItem('favoriteDestinations', JSON.stringify(favorites));
 };
 
-// Trip cost calculation
-const calculateTripCost = () => {
-  const days = Number(document.getElementById('days')?.value) || 0;
-  const dailyCost = Number(document.getElementById('dailyCost')?.value) || 0;
-  const total = days * dailyCost;
-  const output = document.getElementById('totalCost');
-  if (output) {
-    output.innerText = `Total Trip Cost: $${total.toFixed(2)}`;
-  }
-};
+// // Trip cost calculation
+// const calculateTripCost = () => {
+//   const days = Number(document.getElementById('days')?.value) || 0;
+//   const dailyCost = Number(document.getElementById('dailyCost')?.value) || 0;
+//   const total = days * dailyCost;
+//   const output = document.getElementById('totalCost');
+//   if (output) {
+//     output.innerText = `Total Trip Cost: $${total.toFixed(2)}`;
+//   }
+// };
 
 // Scroll progress bar only (no scroll-to-top button)
-window.addEventListener('scroll', () => {
-  const scroll = document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (scroll / height) * 100;
+// window.addEventListener('scroll', () => {
+//   const scroll = document.documentElement.scrollTop;
+//   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+//   const scrolled = (scroll / height) * 100;
 
-  const scrollProgress = document.getElementById("scrollProgress");
-  if (scrollProgress) {
-    scrollProgress.style.width = `${scrolled}%`;
-  }
-});
+//   const scrollProgress = document.getElementById("scrollProgress");
+//   if (scrollProgress) {
+//     scrollProgress.style.width = `${scrolled}%`;
+//   }
+// });
 
 // Preloader hide on page load
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  if (preloader) preloader.style.display = "none";
-});
+// window.addEventListener("load", () => {
+//   const preloader = document.getElementById("preloader");
+//   if (preloader) preloader.style.display = "none";
+// });
 
 // Initialize on DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {

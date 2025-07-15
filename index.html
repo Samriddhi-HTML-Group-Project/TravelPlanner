@@ -17,17 +17,18 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
+  <script src="app.js" type="module"></script>
   
 </head>
 
 <body>
-  <!-- Preloader -->
+  <!-- Preloader
   <div id="preloader">
     <div class="loader"></div>
-  </div>
+  </div> -->
 
-  <!-- Scroll Progress -->
-  <div id="scrollProgress"></div>
+  <!-- Scroll Progress
+  <div id="scrollProgress"></div> -->
 
   <!-- Navbar -->
   <nav>
@@ -40,7 +41,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <button class="login-btn" onclick="openModal()">Login</button>
+      <button class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
       <button class="dark-toggle" onclick="toggleDarkMode()">
         <i data-lucide="moon"></i>
       </button>
@@ -64,7 +65,18 @@
         <h1>Your Adventure Starts Here</h1>
         <p>Plan your dream trip with us today!</p>
         <div class="dropdown">
-          <input type="text" class="textbox" placeholder="Dropdown menu" readonly />
+          <select name="dropdown-destinations" id="dropdown">
+            <option value="">Choose a destination</option>
+            <option value="kathmandu-valley">Kathmandu Valley</option>
+            <option value="pokhara">Pokhara</option>
+            <option value="chitwan">Chitwan</option>
+            <option value="lumbini">Lumbini</option>
+            <option value="everest-region">Everest Region</option>
+            <option value="annapurna-region">Annapurna Region</option>
+            <option value="others">Other Popular Destinations</option>
+
+          </select>
+          <!-- <input type="text" class="textbox" placeholder="Dropdown menu" readonly />
           <div class="option">
             <div onclick="show('Kathmandu')">Kathmandu</div>
             <div onclick="show('Bhaktapur')">Bhaktapur</div>
@@ -73,7 +85,7 @@
             <div onclick="show('Mustang')">Mustang</div>
             <div onclick="show('Annapurna Base Camp')">Annapurna Base Camp</div>
             
-          </div>
+          </div> -->
         </div>
 
       </div>
