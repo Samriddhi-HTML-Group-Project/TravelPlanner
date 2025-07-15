@@ -34,12 +34,26 @@
   <nav>
     <div class="logo"><img src="/assects/Logo.png" height="100" width="110" alt="Logo"></div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#destinations">Destinations</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+   <ul class="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#destinations">Destinations</a></li>
+
+  <!-- Features Dropdown -->
+<li class="nav-dropdown">
+  <a href="#features">Features ▾</a>
+  <ul class="dropdown-menu">
+    <li><a href="#itinerary-builder">Itinerary Builder</a></li>
+    <li><a href="#budget-tracker">Budget and Expense Tracker</a></li>
+    <li><a href="#travel">Travel</a></li>
+    <li><a href="#travel-stats">Travel Stats</a></li>
+  </ul>
+</li>
+
+
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+
     <div class="nav-right">
       <button class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
       <button class="dark-toggle" onclick="toggleDarkMode()">
@@ -84,7 +98,6 @@
             <div onclick="show('Pokhara')">Pokhara</div>
             <div onclick="show('Mustang')">Mustang</div>
             <div onclick="show('Annapurna Base Camp')">Annapurna Base Camp</div>
-            
           </div> -->
         </div>
 
@@ -124,7 +137,7 @@
       </div>
       <div class="card" data-id="lumbini">
         <div class="favorite-icon">♡</div>
-        <img src="/assects/lumbani 2.jpg" alt="Lumbini">
+        <img src="/assects/lumbani2.jpg" alt="Lumbini">
         <h3>Lumbini, Nepal</h3>
       </div>
       <div class="card" data-id="pokhara">

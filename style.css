@@ -501,7 +501,62 @@ body.dark-mode .dropdown-options li:hover {
     pointer-events: none;
     
 }
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Parent Dropdown Item */
+.nav-dropdown {
+  position: relative;
+  list-style: none;
+}
 
+.nav-dropdown > a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px px;
+  display: inline-block;
+  background: none;
+}
 
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 200px;
+}
 
+/* Dropdown Items */
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Hover Effects */
+.dropdown-menu li a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Show dropdown on hover */
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Responsive optional (can skip if not needed) */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+  }
+}
