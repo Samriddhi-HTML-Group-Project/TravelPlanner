@@ -106,6 +106,33 @@ ul.nav-links li a {
   font-weight: 500;
   padding: 10px 0;
   display: block;
+  position: relative; /* Needed for pseudo-element */
+  transition: color 0.3s ease;
+}
+
+ul.nav-links li a:hover,
+ul.nav-links li a:focus {
+  color: #3498db;
+}
+
+ul.nav-links li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #3498db;
+  transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  /* Add transform origin for slide effect */
+  transform-origin: left;
+}
+
+ul.nav-links li a:hover::after,
+ul.nav-links li a:focus::after {
+  width: 100%;
 }
 
 body.dark-mode ul.nav-links li a {
