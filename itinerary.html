@@ -1,135 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepal Trip Planner - Itinerary Builder</title>
-    <link rel="stylesheet" href="itinerary.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nepal Trip Planner - Itinerary Builder</title>
+  <link rel="stylesheet" href="itinerary.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>Trip planner</h1>
-            <p>"यात्रा केवल गन्तव्यसम्म होइन, आत्मासम्मको संवाद हो।"</p>
+  <header>
+    <div class="container">
+      <h1>Trip planner</h1>
+      <p>"यात्रा केवल गन्तव्यसम्म होइन, आत्मासम्मको संवाद हो।"</p>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search destinations, activities, or packages..."
+          aria-label="Search for destinations or activities" />
+        <button type="button">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="itinerary-builder">
+    <div class="container">
+      <h2>Build Your Itinerary</h2>
+      <div class="itinerary-form">
+        <div class="form-group">
+          <label for="location">Destination</label>
+          <select id="location" aria-label="Select destination">
+            <option value="">Select</option>
+
+            <option value="kathmandu">Kathmandu</option>
+            <option value="bhaktapur">Bhaktapur</option>
+            <option value="lalitpur">Lalitpur</option>
+            <option value="annapurna base camp">Annapurna Base Camp</option>
+            <option value="dhorpatan">Dhorpatan</option>
+            <option value="pokhara">Pokhara</option>
+            <option value="mustang">Mustang</option>
+            <option value="lumbini">Lumbini</option>
+            <option value="langtang">Langtang</option>
+          </select>
         </div>
-    </header>
+        <div class="form-group">
+          <div class="form-group">
+            <label for="groupSize" id="num">Number of travellers</label>
+            <input type="number" id="groupSize" name="groupSize" min="1" placeholder="Empty = Solo Traveler"
+              aria-label="Enter no of travellers" />
+          </div>
 
-    <section class="search-section">
-        <div class="container">
-            <div class="search-bar">
-                <input type="text" placeholder="Search destinations, activities, or packages..." aria-label="Search for destinations or activities">
-                <button type="button">Search</button>
-            </div>
         </div>
-    </section>
-
-    <section class="itinerary-builder">
-        <div class="container">
-            <h2>Build Your Itinerary</h2>
-            <div class="itinerary-form">
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <select id="location" aria-label="Select destination">
-                        <option value="">Select</option>  
-                        <option value="jhapa">Jhapa</option>
-                        <option value="kathmandu">Kathmandu</option>
-                        <option value="bharatpur">Bharatpur</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="date">Travel Date</label>
-                    <input type="date" id="date" aria-label="Select travel date">
-                </div>
-                <div class="form-group">
-                    <label for="duration">Duration (Days)</label>
-                    <input type="number" id="duration" min="1" max="30" placeholder="e.g., 5" aria-label="Enter trip duration">
-                </div>
-                <div class="form-group">
-                    <label for="activities">Activities</label>
-                    <select id="activities" multiple aria-label="Select activities">
-                        <option value="trekking">Trekking</option>
-                        <option value="sightseeing">Sightseeing</option>
-                        <option value="cultural">Cultural Tours</option>
-                        <option value="adventure">Adventure Sports</option>
-                        <option value="wildlife">Wildlife Safari</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="groupSize" id="num">Number of travellers</label>
-                    <input type="number" id="groupSize" name="groupSize" min="1" placeholder="Empty = Solo Traveler" aria-label="Enter no of travellers">
-                </div>
-                <button type="button" class="add-to-itinerary" onclick="showmessage() ">Build Itinerary</button>
-            </div>
+        <div class="form-group">
+          <label for="duration">Duration (Days)</label>
+          <select id="days">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7" selected>7</option>
+          </select>
         </div>
-    </section>
-    
-    <script>
-  function showmessage() {
-    const Location = document.getElementById("location").value;
-    const groupSize = parseInt(document.getElementById("groupSize").value);
 
-    if(Location === "jhapa") {
-      document.getElementById("message").innerHTML = `
-  <p style="font-weight: bold;">Day 1: Arrival & Settling In</p>
-  <ul>
-    <li>Arrive via Chandragadhi Airport or Birtamode bus terminal</li>
-    <li>Check in to a local hotel or homestay</li>
-    <li>Evening walk around Birtamode Bazaar</li>
-    <li>Dinner at a quiet local restaurant</li>
-  </ul>
+        <button type="button" class="add-to-itinerary" onclick="showmessage()">Build Itinerary</button>
+      </div>
+    </div>
+  </section>
 
-  <p style="font-weight: bold;">Day 2: Tea & Tranquility</p>
-  <ul>
-    <li>Travel to Kanyam Tea Garden</li>
-    <li>Solo walk through tea fields</li>
-    <li>Visit nearby viewpoints for photos</li>
-    <li>Overnight at a tea-themed lodge or homestay</li>
-  </ul>
+  <section class="itinerary-preview">
+    <div class="container">
+      <h2>Your Itinerary</h2>
+      <div class="itinerary-list">
+        <p id="message">Your planned trip will appear here...</p>
+      </div>
+      <button type="button" class="save-itinerary">Save Itinerary</button>
+    </div>
+  </section>
 
-  <p style="font-weight: bold;">Day 3: Ilam Culture Day</p>
-  <ul>
-    <li>Explore Ilam Bazaar and local produce markets</li>
-    <li>Visit Mai Pokhari (holy pond surrounded by forest)</li>
-    <li>Try local food: sukuti, churpi, etc.</li>
-    <li>Evening tea at a scenic café</li>
-  </ul>
+  <footer>
+    <div class="container">
+      <p>© 2025 Trip planner. All rights reserved.</p>
+      <p>
+        Contact us at <a href="mailto:info@tripplanner.com">info@tripplanner.com</a>
+      </p>
+    </div>
+  </footer>
 
-  <p style="font-weight: bold;">Day 4: Antu Danda Sunrise</p>
-  <ul>
-    <li>Pre-dawn hike or drive to Antu Danda for sunrise</li>
-    <li>Solo meditation or journaling on the ridge</li>
-    <li>Picnic breakfast</li>
-    <li>Return to Birtamode in the afternoon</li>
-  </ul>
+  <script>
+    function showmessage() {
+      const Location = document.getElementById("location").value.trim().toLowerCase();
+      const Duration = document.getElementById("days").value;
 
-  <p style="font-weight: bold;">Day 5: Rural Life & Homestay</p>
-  <ul>
-    <li>Travel to Bahundangi village</li>
-    <li>Experience local farming and community cooking</li>
-    <li>Homestay with local family</li>
-    <li>Evening storytelling or cultural talk</li>
-  </ul>
-
-  <p style="font-weight: bold;">Day 6: Spiritual & Local Sites</p>
-  <ul>
-    <li>Visit Arjundhara Temple and nearby religious sites</li>
-    <li>Light hike around Damak hills</li>
-    <li>Cafe time and relaxing afternoon</li>
-    <li>Dinner with a view in a rooftop restaurant</li>
-  </ul>
-
-  <p style="font-weight: bold;">Day 7: Wrap-Up</p>
-  <ul>
-    <li>Last-minute souvenir shopping</li>
-    <li>Morning walk or revisit a favorite tea spot</li>
-    <li>Pack and transfer to airport or bus park</li>
-    <li>Farewell local snack: sel roti or chiya combo</li>
-  </ul>
+      if (Location === "jhapa") {
+        document.getElementById("message").innerHTML = `
 `;
-
-    } else if(Location === "kathmandu") {
-      document.getElementById("message").innerHTML = `
+      } if (Location === "kathmandu" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
   <p style="font-weight: bold;">Day 1: Arrival & Settling In</p>
   <ul>
     <li>Arrive in Kathmandu</li>
@@ -155,18 +127,18 @@
     <li>Eat at a Tibetan restaurant nearby (e.g., Garden Kitchen, Stupa View Café)</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 4: Day Trip / Nature Exploration</p>
-  <ul>
-    <li>Option A: Hike to Nagarkot (sunrise view, light trek from Sankhu)</li>
-    <li>Option B: Bhaktapur Day Trip (UNESCO city, pottery, temples)</li>
-    <li>Dinner back in Kathmandu</li>
-  </ul>
+  <p style="font-weight: bold;">Day 4: Swayambhunath & Museums</p>
+<ul>
+  <li>Morning visit to Swayambhunath (Monkey Temple)</li>
+  <li>Explore the National Museum or the Natural History Museum</li>
+  <li>Relax at a café in swayambhu or Thamel</li>
+</ul>
 
   <p style="font-weight: bold;">Day 5: Local Experiences</p>
   <ul>
     <li>Take a cooking class (learn momos, dal bhat)</li>
     <li>Explore Garden of Dreams for relaxation</li>
-    <li>Souvenir shopping (Thamel, Patan, or Boudha)</li>
+    <li>Souvenir shopping (Thamel, Boudha, or other places)</li>
     <li>Optional: Spa or massage (Himalayan Ayurvedic options available)</li>
   </ul>
 
@@ -184,88 +156,1807 @@
     <li>Farewell snack: Newari food tasting or local sweets (sel roti, yomari)</li>
   </ul>
 `;
-    }
-    else if(Location === "bharatpur") {
-      document.getElementById("message").innerHTML = `
-  <p style="font-weight: bold;">Day 1: Arrival & Riverside Calm</p>
+      } else if (Location === "kathmandu" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Settling In</p>
+<ul>
+  <li>Arrive in Kathmandu</li>
+  <li>Transfer to hotel in Thamel</li>
+  <li>Light exploration around Thamel: cafés, handicraft shops, bookstores</li>
+  <li>Optional: Attend a live Nepali music show in the evening (Purple Haze, House of Music, etc.)</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Cultural Immersion</p>
+<ul>
+  <li>Breakfast at a local spot (e.g., OR2K, Pumpernickel)</li>
+  <li>Visit Swayambhunath (Monkey Temple) – great for sunrise or early morning</li>
+  <li>Explore Kathmandu Durbar Square</li>
+  <li>Walk through Asan Bazaar (old local market)</li>
+  <li>Lunch in Patan area or back in Thamel</li>
+  <li>Optional evening activity: traditional Nepali dinner with dance performance (e.g., Bhojan Griha)</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Temples & Spiritual Day</p>
+<ul>
+  <li>Early visit to Pashupatinath Temple (Hindu rituals, cremation ghats)</li>
+  <li>Continue to Boudhanath Stupa — ideal for solo meditation or group kora (walk around the stupa)</li>
+  <li>Eat at a Tibetan restaurant nearby (e.g., Garden Kitchen, Stupa View Café)</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Day Trip / Nature Exploration</p>
+<ul>
+  <li>Option A: Hike to Nagarkot (sunrise view, light trek from Sankhu)</li>
+  <li>Option B: Bhaktapur Day Trip (UNESCO city, pottery, temples)</li>
+  <li>Dinner back in Kathmandu</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Local Experiences</p>
+<ul>
+  <li>Take a cooking class (learn momos, dal bhat)</li>
+  <li>Explore Garden of Dreams for relaxation</li>
+  <li>Souvenir shopping (Thamel, Patan, or Boudha)</li>
+  <li>Optional: Spa or massage (Himalayan Ayurvedic options available)</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Wrap-Up & Departure</p>
+<ul>
+  <li>Morning: Free time for journaling, last-minute shopping</li>
+  <li>Visit a nearby viewpoint or temple if you have time (e.g., White Gumba)</li>
+  <li>Check out, transfer to airport</li>
+  <li>Farewell snack: Newari food tasting or local sweets (sel roti, yomari)</li>
+</ul>
+`;
+      } else if (Location === "kathmandu" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+ <p style="font-weight: bold;">Day 1: Arrival & Orientation</p>
+<ul>
+  <li>Arrive in Kathmandu</li>
+  <li>Transfer to hotel in Thamel</li>
+  <li>Explore Thamel area: cafés, shops, and live Nepali music venues</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Kathmandu’s Iconic Sites</p>
+<ul>
+  <li>Morning visit to Swayambhunath (Monkey Temple)</li>
+  <li>Explore Kathmandu Durbar Square</li>
+  <li>Walk through Asan Bazaar market</li>
+  <li>Lunch at a local Nepali restaurant</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Spiritual and Cultural Exploration</p>
+<ul>
+  <li>Early visit to Pashupatinath Temple</li>
+  <li>Visit Boudhanath Stupa for meditation and stroll</li>
+  <li>Lunch at a Tibetan restaurant nearby</li>
+  <li>Optional: Evening cultural show or traditional dinner</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Local Exploration & Relaxation</p>
+<ul>
+  <li>Visit Garden of Dreams for a peaceful morning</li>
+  <li>Explore nearby museums like the National Museum or Hanuman Dhoka</li>
+  <li>Relax at a café in Thamel</li>
+  <li>Evening stroll or shopping in Thamel</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Local Experience & Departure</p>
+<ul>
+  <li>Morning cooking class focusing on Nepali cuisine</li>
+  <li>Last-minute souvenir shopping in Thamel</li>
+  <li>Check out and transfer to the airport</li>
+  <li>Farewell snack: sel roti or yomari</li>
+</ul>
+`;
+      } else if (Location === "kathmandu" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+<p style="font-weight: bold;">Day 1: Arrival & Cultural Walk</p>
+<ul>
+  <li>Arrive in Kathmandu and check in at hotel (Thamel area recommended)</li>
+  <li>Explore Thamel streets for shops and local cafés</li>
+  <li>Evening visit to Kathmandu Durbar Square</li>
+</ul>
+
+
+<p style="font-weight: bold;">Day 2: Iconic Heritage Sites</p>
+<ul>
+  <li>Morning visit to Swayambhunath (Monkey Temple)</li>
+  <li>Walk through Asan Bazaar and Indra Chowk</li>
+  <li>Lunch at a traditional Nepali restaurant</li>
+  <li>Evening at Garden of Dreams</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Spiritual Kathmandu</p>
+<ul>
+  <li>Early visit to Pashupatinath Temple</li>
+  <li>Explore Boudhanath Stupa and nearby monasteries</li>
+  <li>Lunch at a Tibetan restaurant</li>
+  <li>Optional: Attend a cultural dance show in the evening</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Local Flavors & Departure</p>
+<ul>
+  <li>Morning visit to Budhanilkantha Temple (Sleeping Vishnu)</li>
+  <li>Try a Nepali cooking class or food tour</li>
+  <li>Last-minute souvenir shopping in Thamel</li>
+  <li>Transfer to the airport for departure</li>
+</ul>
+`;
+      } else if (Location === "kathmandu" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+<p style="font-weight: bold;">Day 1: Arrival & Heritage Walk</p>
+<ul>
+  <li>Arrive in Kathmandu and check in at hotel (Thamel recommended)</li>
+  <li>Explore Thamel streets, shops, and local cafés</li>
+  <li>Evening visit to Kathmandu Durbar Square and Kumari Ghar</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Spiritual & Iconic Sites</p>
+<ul>
+  <li>Morning visit to Swayambhunath Stupa (Monkey Temple)</li>
+  <li>Visit Pashupatinath Temple</li>
+  <li>Lunch at a traditional Nepali restaurant</li>
+  <li>Afternoon at Boudhanath Stupa and nearby monasteries</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Culture & Markets</p>
+<ul>
+  <li>Visit Garden of Dreams for a peaceful morning</li>
+  <li>Explore Asan Bazaar and Indra Chowk markets</li>
+  <li>Lunch at a local café</li>
+  <li>Last-minute shopping in Thamel before departure</li>
+</ul>
+`;
+      } else if (Location === "kathmandu" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+<p style="font-weight: bold;">Day 1: Heritage & Culture</p>
+<ul>
+  <li>Morning visit to Swayambhunath Stupa (Monkey Temple) for panoramic views</li>
+  <li>Explore Kathmandu Durbar Square and Kumari Ghar (Living Goddess)</li>
+  <li>Lunch at a traditional Nepali restaurant in Thamel</li>
+  <li>Stroll around Thamel streets for shops, cafés, and handicrafts</li>
+  <li>Evening relaxation at Garden of Dreams</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Spiritual & Local Life</p>
+<ul>
+  <li>Sunrise walk at Boudhanath Stupa, join locals in morning kora</li>
+  <li>Visit Pashupatinath Temple and observe rituals along Bagmati River</li>
+  <li>Lunch at a Tibetan/Nepali fusion restaurant near Boudha</li>
+  <li>Explore Kopan Monastery for a peaceful afternoon</li>
+  <li>Evening shopping in Asan Bazaar and Thamel before departure</li>
+</ul>
+`;
+      } else if (Location === "kathmandu" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+<p style="font-weight: bold;">Day 1: Highlights of Kathmandu</p>
+<ul>
+  <li>Morning visit to Swayambhunath Stupa (Monkey Temple) for city views</li>
+  <li>Explore Kathmandu Durbar Square and Kumari Ghar (Living Goddess)</li>
+  <li>Lunch at a traditional Nepali restaurant in Thamel</li>
+  <li>Visit Pashupatinath Temple to observe rituals along Bagmati River</li>
+  <li>End the day at Boudhanath Stupa for sunset views and local tea</li>
+</ul>
+`;
+      } else if (Location === "bhaktapur" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & First Impressions</p>
   <ul>
-    <li>Arrive via Bharatpur Airport or bus from Kathmandu/Pokhara</li>
-    <li>Settle into a solo-friendly guesthouse near Narayani River</li>
-    <li>Evening riverside walk at Devghat</li>
-    <li>Dinner at a quiet local eatery</li>
+    <li>Arrive in Bhaktapur and check into a hotel/guesthouse inside or near the old city</li>
+    <li>Stroll around Bhaktapur Durbar Square — 55-Window Palace, Golden Gate, Lion’s Gate</li>
+    <li>Enjoy Juju Dhau (King Curd) in the evening</li>
+    <li>Dinner at a rooftop restaurant with views of the square</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 2: Nature & Birds</p>
+  <p style="font-weight: bold;">Day 2: Temples & Squares</p>
   <ul>
-    <li>Morning birdwatching at Bishazari Tal (20,000 lakes)</li>
-    <li>Solo nature photography session</li>
-    <li>Lunch at lakeside dhaba</li>
-    <li>Evening journaling or café visit</li>
+    <li>Breakfast at a local café</li>
+    <li>Visit Taumadhi Square — Nyatapola Temple & Bhairabnath Temple</li>
+    <li>Explore Pottery Square — try your hand at pottery</li>
+    <li>Evening walk through alleyways and courtyards</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 3: Chitwan National Park</p>
+  <p style="font-weight: bold;">Day 3: Dattatreya & Local Crafts</p>
   <ul>
-    <li>Join a shared jungle walk with a guide</li>
-    <li>Optional canoe ride on Rapti River</li>
-    <li>Visit Elephant Breeding Center</li>
-    <li>Sunset view from Rapti riverside with binoculars</li>
+    <li>Morning at Dattatreya Square — Dattatreya Temple, Peacock Window</li>
+    <li>Visit woodcarving and metal craft workshops</li>
+    <li>Lunch at a traditional Newari eatery</li>
+    <li>Relax at Siddha Pokhari in the evening</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 4: Devghat Exploration</p>
+  <p style="font-weight: bold;">Day 4: Nagarkot Excursion</p>
   <ul>
-    <li>Solo morning hike around Devghat holy area</li>
-    <li>Explore ashrams, temples, and caves</li>
-    <li>Try sattvic food at a local temple kitchen (if open)</li>
-    <li>Return to Bharatpur town for evening</li>
+    <li>Early morning drive to Nagarkot for sunrise views</li>
+    <li>Breakfast in Nagarkot</li>
+    <li>Optional short hike or visit Changu Narayan Temple on the return</li>
+    <li>Dinner back in Bhaktapur</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 5: Local Life & Art</p>
+  <p style="font-weight: bold;">Day 5: Hidden Alleys & Workshops</p>
   <ul>
-    <li>Visit Narayangarh Market for solo street photography</li>
-    <li>Explore art at local museums or culture centers</li>
-    <li>Try traditional Tharu lunch</li>
-    <li>Evening walk at Shantiban Peace Garden</li>
+    <li>Guided walk to hidden courtyards and lesser-known temples</li>
+    <li>Join a Thanka painting or paper-making workshop</li>
+    <li>Afternoon coffee in a courtyard café</li>
+    <li>Evening photography in Durbar Square</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 6: Food & Relaxation</p>
+  <p style="font-weight: bold;">Day 6: Panauti Day Trip</p>
   <ul>
-    <li>Join a Nepali cooking class (if available)</li>
-    <li>Massage or spa time (Ayurvedic treatments recommended)</li>
-    <li>Visit a library or solo reading café</li>
-    <li>Quiet dinner at rooftop restaurant</li>
+    <li>Morning drive to Panauti (~45 min)</li>
+    <li>Explore Indreshwar Mahadev Temple & the old bazaar</li>
+    <li>Enjoy a home-cooked Newari lunch via Community Homestay</li>
+    <li>Return to Bhaktapur and enjoy live local music if available</li>
   </ul>
 
-  <p style="font-weight: bold;">Day 7: Wrap-Up</p>
+  <p style="font-weight: bold;">Day 7: Farewell Day</p>
   <ul>
-    <li>Pack and prepare for departure</li>
-    <li>Last riverside stroll or meditation time</li>
-    <li>Try local sweets (e.g., khuwa, peda)</li>
-    <li>Transfer to bus station or airport</li>
+    <li>Early morning coffee at Siddha Pokhari</li>
+    <li>Last-minute souvenir shopping — pottery, woodcraft, paper products</li>
+    <li>Final walk through your favorite square</li>
+    <li>Check out, transfer to next destination</li>
+    <li>Farewell treat: Juju Dhau or yomari</li>
   </ul>
 `;
+      } else if (Location === "bhaktapur" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Durbar Square</p>
+<ul>
+  <li>Arrive in Bhaktapur and check in at a traditional guesthouse</li>
+  <li>Explore Bhaktapur Durbar Square, 55-Window Palace, and Vatsala Temple</li>
+  <li>Evening stroll around the square with local snacks</li>
+</ul>
 
+<p style="font-weight: bold;">Day 2: Pottery & Heritage Walk</p>
+<ul>
+  <li>Morning visit to Pottery Square to see traditional pottery making</li>
+  <li>Explore Dattatreya Square and Peacock Window</li>
+  <li>Lunch at a rooftop café with city views</li>
+  <li>Evening walk through Taumadhi Square and Nyatapola Temple</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Temples & Local Life</p>
+<ul>
+  <li>Visit Siddha Pokhari for a peaceful morning</li>
+  <li>Explore local neighborhoods and hidden courtyards</li>
+  <li>Lunch at a Newari restaurant to try local dishes</li>
+  <li>Evening tea at a traditional tea house</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Cultural Workshops</p>
+<ul>
+  <li>Join a woodcarving or pottery-making workshop</li>
+  <li>Visit Bhaktapur Art Museum</li>
+  <li>Lunch in a heritage courtyard café</li>
+  <li>Evening leisure walk around the city’s narrow alleys</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Countryside & Surroundings</p>
+<ul>
+  <li>Short hike to nearby villages like Changu Narayan (UNESCO site)</li>
+  <li>Visit local farms and enjoy countryside views</li>
+  <li>Lunch at a local homestay</li>
+  <li>Return to Bhaktapur for evening rest</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Markets & Farewell</p>
+<ul>
+  <li>Shop for souvenirs at local markets (pottery, woodcraft, thangka art)</li>
+  <li>Morning coffee at a rooftop café overlooking Durbar Square</li>
+  <li>Farewell lunch with traditional Newari feast</li>
+  <li>Departure from Bhaktapur</li>
+</ul>
+`;
+      } else if (Location === "bhaktapur" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Durbar Square</p>
+<ul>
+  <li>Arrive in Bhaktapur and check in at a heritage guesthouse</li>
+  <li>Explore Bhaktapur Durbar Square, 55-Window Palace, and Vatsala Temple</li>
+  <li>Evening walk around Taumadhi Square</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Pottery & Squares</p>
+<ul>
+  <li>Morning at Pottery Square to watch artisans at work</li>
+  <li>Visit Dattatreya Square and Peacock Window</li>
+  <li>Lunch at a rooftop café</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Temples & Culture</p>
+<ul>
+  <li>Morning visit to Siddha Pokhari</li>
+  <li>Explore hidden courtyards and traditional neighborhoods</li>
+  <li>Evening tea at a local teahouse</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Workshops & Museums</p>
+<ul>
+  <li>Join a pottery-making or woodcarving workshop</li>
+  <li>Visit Bhaktapur Art Museum</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Farewell</p>
+<ul>
+  <li>Morning shopping for pottery and crafts</li>
+  <li>Farewell lunch with a Newari feast</li>
+</ul>
+
+`;
+      } else if (Location === "bhaktapur" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Durbar Square & Arrival</p>
+<ul>
+  <li>Check in at a heritage guesthouse</li>
+  <li>Explore Bhaktapur Durbar Square and Taumadhi Square</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Pottery & Dattatreya</p>
+<ul>
+  <li>Morning at Pottery Square</li>
+  <li>Visit Dattatreya Square and Peacock Window</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Local Life</p>
+<ul>
+  <li>Visit Siddha Pokhari</li>
+  <li>Explore hidden lanes and small temples</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Farewell</p>
+<ul>
+  <li>Shop for souvenirs</li>
+  <li>Lunch at a Newari restaurant before departure</li>
+</ul>
+
+`;
+      } else if (Location === "bhaktapur" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Heritage Exploration</p>
+<ul>
+  <li>Visit Bhaktapur Durbar Square, 55-Window Palace, and Taumadhi Square</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Craft & Culture</p>
+<ul>
+  <li>Morning at Pottery Square</li>
+  <li>Visit Dattatreya Square and local shops</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Farewell</p>
+<ul>
+  <li>Visit Siddha Pokhari</li>
+  <li>Last-minute shopping before departure</li>
+</ul>
+`;
+      } else if (Location === "bhaktapur" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Main Heritage Sites</p>
+<ul>
+  <li>Visit Bhaktapur Durbar Square and Taumadhi Square</li>
+  <li>Evening walk around Pottery Square</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Farewell Morning</p>
+<ul>
+  <li>Visit Dattatreya Square</li>
+  <li>Shop for local crafts before departure</li>
+</ul>
+
+`;
+      } else if (Location === "bhaktapur" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Bhaktapur Highlights</p>
+<ul>
+  <li>Explore Bhaktapur Durbar Square, 55-Window Palace, and Nyatapola Temple</li>
+  <li>Walk through Pottery Square and Dattatreya Square</li>
+  <li>Lunch at a Newari restaurant before departure</li>
+</ul>
+
+`;
+      } else if (Location === "lalitpur" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Orientation</p>
+  <ul>
+    <li>Arrive in Lalitpur and check into a guesthouse near Patan Durbar Square</li>
+    <li>Evening stroll around Patan Durbar Square</li>
+    <li>Dinner at a traditional Newari restaurant</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Patan Durbar Square & Museums</p>
+  <ul>
+    <li>Explore Patan Durbar Square: 55-Window Palace, Golden Temple</li>
+    <li>Visit Patan Museum for local art and history</li>
+    <li>Lunch at a cozy courtyard café</li>
+    <li>Relax with coffee at a local café</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Temples & Heritage Walk</p>
+  <ul>
+    <li>Visit Krishna Mandir and Bhimsen Temple</li>
+    <li>Walk through traditional alleys discovering hidden temples</li>
+    <li>Attend a craft workshop (Thanka painting or pottery)</li>
+    <li>Evening tasting of Newari street snacks</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Village Day Trip</p>
+  <ul>
+    <li>Day trip to Bungamati and Khokana villages</li>
+    <li>Explore rural Newari culture, temples, and artisan workshops</li>
+    <li>Traditional Newari lunch with a local family</li>
+    <li>Return to Lalitpur for dinner</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Art & Craft Exploration</p>
+  <ul>
+    <li>Visit metalworking and woodcarving workshops in Patan</li>
+    <li>Try pottery or traditional crafts yourself</li>
+    <li>Afternoon visit to Mahabouddha Temple (Thousand Buddhas)</li>
+    <li>Dinner at a rooftop restaurant with city views</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Garden & Relaxation</p>
+  <ul>
+    <li>Morning visit to Central Zoo Park or community gardens</li>
+    <li>Shopping for souvenirs near Golden Gate</li>
+    <li>Evening yoga or meditation session</li>
+    <li>Chill time at a café or tea house</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Wrap-Up & Departure</p>
+  <ul>
+    <li>Free morning for last-minute shopping or walking</li>
+    <li>Visit any missed temples or spots</li>
+    <li>Pack and check out</li>
+    <li>Farewell lunch with Newari cuisine</li>
+    <li>Transfer to next destination or airport</li>
+  </ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Patan Durbar Square</p>
+<ul>
+  <li>Check in and explore Patan Durbar Square, Golden Temple, and Mahabouddha</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Museum & Bazaar</p>
+<ul>
+  <li>Visit Patan Museum</li>
+  <li>Shop in Mangal Bazaar</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Courtyards & Temples</p>
+<ul>
+  <li>Explore Uku Bahal and hidden courtyards</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Workshops</p>
+<ul>
+  <li>Join an art or craft workshop</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Buddhist Sites</p>
+<ul>
+  <li>Visit Ashok Stupa</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Farewell</p>
+<ul>
+  <li>Shopping and farewell lunch</li>
+</ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Patan Durbar Square</p>
+<ul>
+  <li>Explore Durbar Square, Golden Temple, and Mahabouddha</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Museum & Market</p>
+<ul>
+  <li>Visit Patan Museum</li>
+  <li>Stroll Mangal Bazaar</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Courtyards</p>
+<ul>
+  <li>Discover Uku Bahal and hidden courtyards</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Workshops</p>
+<ul>
+  <li>Join a craft workshop</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Farewell</p>
+<ul>
+  <li>Final shopping and lunch</li>
+</ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Patan Durbar Square</p>
+<ul>
+  <li>Explore main heritage sites</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Museum & Market</p>
+<ul>
+  <li>Visit Patan Museum and Mangal Bazaar</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Courtyards</p>
+<ul>
+  <li>Visit Uku Bahal and hidden lanes</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Farewell</p>
+<ul>
+  <li>Shopping and lunch before departure</li>
+</ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+ <p style="font-weight: bold;">Day 1: Heritage Walk</p>
+<ul>
+  <li>Patan Durbar Square and Golden Temple</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Museum & Bazaar</p>
+<ul>
+  <li>Patan Museum and Mangal Bazaar</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Farewell</p>
+<ul>
+  <li>Final walk through courtyards before departure</li>
+</ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Patan Durbar Square</p>
+<ul>
+  <li>Explore Durbar Square, Golden Temple, and Mahabouddha</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Farewell Morning</p>
+<ul>
+  <li>Visit Patan Museum and shop in Mangal Bazaar</li>
+</ul>
+`;
+      } else if (Location === "lalitpur" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Lalitpur Highlights</p>
+<ul>
+  <li>Patan Durbar Square, Golden Temple, and Mahabouddha</li>
+  <li>Quick stop at Patan Museum</li>
+  <li>Lunch at a heritage café before departure</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Acclimatization</p>
+  <ul>
+    <li>Arrive at Dhorpatan via Baglung or Beni</li>
+    <li>Check in to a guesthouse or lodge</li>
+    <li>Short walk around town to acclimate</li>
+    <li>Early dinner and rest</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Explore Dhorpatan</p>
+  <ul>
+    <li>Visit Dhorpatan Hunting Reserve information center</li>
+    <li>Light hike in surrounding forest areas</li>
+    <li>Photography and bird watching</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Trek to Local Villages</p>
+  <ul>
+    <li>Day trek to nearby villages like Khabang</li>
+    <li>Interact with local communities</li>
+    <li>Enjoy traditional meals with locals</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Wildlife & Nature</p>
+  <ul>
+    <li>Early morning wildlife spotting tour</li>
+    <li>Visit nearby lakes and meadows</li>
+    <li>Relax and soak in natural beauty</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Cultural Tour</p>
+  <ul>
+    <li>Explore local temples and monasteries</li>
+    <li>Attend cultural programs if available</li>
+    <li>Evening campfire and storytelling</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Leisure & Exploration</p>
+  <ul>
+    <li>Free day for hiking or resting</li>
+    <li>Optional fishing or river walk</li>
+    <li>Prepare for departure</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Departure</p>
+  <ul>
+    <li>Morning stroll around the town</li>
+    <li>Pack and check out</li>
+    <li>Travel back to Baglung or Beni for onward journey</li>
+  </ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Local Exploration</p>
+<ul>
+  <li>Arrive in Dhorpatan and settle into a homestay or lodge</li>
+  <li>Evening walk around the village to meet locals and enjoy the mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Dhorpatan Hunting Reserve</p>
+<ul>
+  <li>Full-day exploration of Dhorpatan Hunting Reserve</li>
+  <li>Spot wildlife such as Himalayan tahr, blue sheep, and various birds</li>
+  <li>Picnic lunch inside the reserve</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Nature Hike & Photography</p>
+<ul>
+  <li>Morning hike to nearby viewpoints for panoramic Himalayan vistas</li>
+  <li>Afternoon photography walk through alpine meadows and rhododendron forests</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Cultural Immersion</p>
+<ul>
+  <li>Visit local Magar and Gurung villages</li>
+  <li>Learn about traditional lifestyle, farming, and crafts</li>
+  <li>Enjoy a home-cooked local dinner with folk music</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Mountain Trails & Relaxation</p>
+<ul>
+  <li>Short trek to explore hidden valleys and mountain streams</li>
+  <li>Afternoon relaxation with views of the snow-capped peaks</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Farewell</p>
+<ul>
+  <li>Morning birdwatching walk</li>
+  <li>Farewell breakfast and departure from Dhorpatan</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Village Walk</p>
+<ul>
+  <li>Arrive in Dhorpatan and check in at a local homestay or lodge</li>
+  <li>Evening walk around the village to enjoy mountain scenery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Dhorpatan Hunting Reserve</p>
+<ul>
+  <li>Full-day trip to explore Dhorpatan Hunting Reserve</li>
+  <li>Spot Himalayan tahr, blue sheep, and rare bird species</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Scenic Hike & Photography</p>
+<ul>
+  <li>Morning hike to nearby hills for panoramic views</li>
+  <li>Afternoon photography of landscapes and wildlife</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Cultural Experience</p>
+<ul>
+  <li>Visit nearby Magar and Gurung villages</li>
+  <li>Learn about traditional culture and enjoy a local meal</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Farewell</p>
+<ul>
+  <li>Morning birdwatching and final exploration</li>
+  <li>Breakfast and departure from Dhorpatan</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Village Exploration</p>
+<ul>
+  <li>Arrive in Dhorpatan and check in at a local homestay</li>
+  <li>Evening walk through the village to enjoy the mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Dhorpatan Hunting Reserve</p>
+<ul>
+  <li>Full-day exploration of Dhorpatan Hunting Reserve</li>
+  <li>Spot Himalayan wildlife and enjoy a picnic lunch</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Nature Hike & Local Culture</p>
+<ul>
+  <li>Morning hike to nearby viewpoints and meadows</li>
+  <li>Afternoon visit to nearby Magar or Gurung villages</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Farewell</p>
+<ul>
+  <li>Early morning birdwatching</li>
+  <li>Breakfast and departure from Dhorpatan</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Village Walk</p>
+<ul>
+  <li>Arrive in Dhorpatan and settle into a local homestay</li>
+  <li>Evening stroll through the village with views of surrounding hills</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Dhorpatan Hunting Reserve</p>
+<ul>
+  <li>Full-day visit to Dhorpatan Hunting Reserve</li>
+  <li>Spot wildlife like Himalayan tahr, blue sheep, and rare birds</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Farewell Morning</p>
+<ul>
+  <li>Short morning hike or birdwatching</li>
+  <li>Breakfast and departure</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Scenic Walk</p>
+<ul>
+  <li>Arrive in Dhorpatan and check in at a local homestay</li>
+  <li>Evening walk through the village and surrounding meadows</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Hunting Reserve & Departure</p>
+<ul>
+  <li>Morning visit to Dhorpatan Hunting Reserve</li>
+  <li>Breakfast and departure</li>
+</ul>
+`;
+      } else if (Location === "dhorpatan" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Dhorpatan Highlights</p>
+<ul>
+  <li>Explore Dhorpatan Hunting Reserve</li>
+  <li>Walk through alpine meadows and enjoy Himalayan views</li>
+  <li>Interact with locals before departure</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside Relaxation</p>
+  <ul>
+    <li>Arrive in Pokhara and check into a hotel near Lakeside</li>
+    <li>Leisurely walk along Phewa Lake</li>
+    <li>Boat ride on the lake (optional)</li>
+    <li>Dinner at a lakeside restaurant with mountain views</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Sightseeing & Adventure</p>
+  <ul>
+    <li>Visit Davis Falls and Gupteshwor Cave</li>
+    <li>Explore World Peace Pagoda via hike or boat</li>
+    <li>Paragliding experience (optional)</li>
+    <li>Evening stroll in Lakeside bazaar</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Mountain Views & Culture</p>
+  <ul>
+    <li>Early morning trip to Sarangkot for sunrise and Himalayan panorama</li>
+    <li>Visit Bindhyabasini Temple</li>
+    <li>Explore old bazaar and local markets</li>
+    <li>Evening cultural program or live music in Lakeside</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Day Trip to Begnas Lake or Tibetan Refugee Camp</p>
+  <ul>
+    <li>Relaxing day at Begnas Lake with swimming and boating</li>
+    <li>Or visit Tibetan Refugee Camp and shop handicrafts</li>
+    <li>Dinner at local Nepali restaurant</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Trekking & Exploration</p>
+  <ul>
+    <li>Half-day trek to Australian Camp or Dhampus village</li>
+    <li>Enjoy panoramic views of Annapurna range</li>
+    <li>Relax in a local café</li>
+    <li>Prepare for next day’s adventure</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Adventure & Leisure</p>
+  <ul>
+    <li>Optional rafting on Seti River or mountain biking</li>
+    <li>Spa or massage session</li>
+    <li>Visit International Mountain Museum</li>
+    <li>Evening by the lakeside</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Departure</p>
+  <ul>
+    <li>Last-minute shopping or coffee at a local café</li>
+    <li>Pack and check out</li>
+    <li>Transfer to Pokhara Airport or bus station</li>
+  </ul>
+`;
+      } else if (Location === "pokhara" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside</p>
+<ul>
+  <li>Arrive in Pokhara and check in at Lakeside hotel</li>
+  <li>Evening walk along Phewa Lake and enjoy lakeside cafés</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sarangkot & Sunrise</p>
+<ul>
+  <li>Early morning drive to Sarangkot for sunrise over Annapurna range</li>
+  <li>Paragliding option for adventure enthusiasts</li>
+  <li>Return to Pokhara and visit Davis Falls and Gupteshwor Cave</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Peace Pagoda & Boating</p>
+<ul>
+  <li>Hike or drive to World Peace Pagoda for panoramic views</li>
+  <li>Boating on Phewa Lake in the afternoon</li>
+  <li>Evening stroll in Lakeside market</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Adventure & Local Culture</p>
+<ul>
+  <li>Morning visit to Begnas Lake or Rupa Lake for a quiet escape</li>
+  <li>Optional zip-lining or mountain biking in the surrounding hills</li>
+  <li>Evening visit to local handicraft shops</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Caves & Waterfalls</p>
+<ul>
+  <li>Explore Mahendra Cave and Bat Cave</li>
+  <li>Visit nearby waterfalls like Devi’s Fall</li>
+  <li>Relaxing evening by the lake with sunset views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Farewell</p>
+<ul>
+  <li>Morning shopping for souvenirs in Lakeside</li>
+  <li>Breakfast and departure from Pokhara</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside</p>
+<ul>
+  <li>Arrive in Pokhara and check in at a Lakeside hotel</li>
+  <li>Evening walk along Phewa Lake and enjoy lakeside cafés</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sarangkot & Sunrise</p>
+<ul>
+  <li>Early morning drive to Sarangkot for sunrise over Annapurna range</li>
+  <li>Optional paragliding for adventure enthusiasts</li>
+  <li>Visit Davis Falls and Gupteshwor Cave</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Peace Pagoda & Boating</p>
+<ul>
+  <li>Hike or drive to World Peace Pagoda</li>
+  <li>Boating on Phewa Lake in the afternoon</li>
+  <li>Evening stroll in Lakeside market</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Caves & Waterfalls</p>
+<ul>
+  <li>Visit Mahendra Cave and Bat Cave</li>
+  <li>Explore Devi’s Fall and nearby viewpoints</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Farewell</p>
+<ul>
+  <li>Morning shopping for souvenirs in Lakeside</li>
+  <li>Breakfast and departure from Pokhara</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside</p>
+<ul>
+  <li>Arrive in Pokhara and check in at a Lakeside hotel</li>
+  <li>Evening walk along Phewa Lake</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sarangkot & Adventure</p>
+<ul>
+  <li>Early morning drive to Sarangkot for sunrise</li>
+  <li>Optional paragliding</li>
+  <li>Visit Davis Falls and Gupteshwor Cave</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Peace Pagoda & Boating</p>
+<ul>
+  <li>Visit World Peace Pagoda</li>
+  <li>Boating on Phewa Lake</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Farewell & Shopping</p>
+<ul>
+  <li>Morning shopping at Lakeside</li>
+  <li>Breakfast and departure from Pokhara</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside</p>
+<ul>
+  <li>Arrive in Pokhara and explore Phewa Lake area</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sarangkot & Peace Pagoda</p>
+<ul>
+  <li>Sunrise at Sarangkot</li>
+  <li>Visit World Peace Pagoda and Boating on Phewa Lake</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Caves & Farewell</p>
+<ul>
+  <li>Visit Mahendra Cave, Bat Cave, and Devi’s Fall</li>
+  <li>Morning shopping and departure</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Lakeside</p>
+<ul>
+  <li>Arrive in Pokhara and check in at Lakeside hotel</li>
+  <li>Evening walk along Phewa Lake</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sarangkot & Departure</p>
+<ul>
+  <li>Early morning sunrise at Sarangkot</li>
+  <li>Visit Peace Pagoda or nearby viewpoints</li>
+  <li>Breakfast and departure from Pokhara</li>
+</ul>
+`;
+      } else if (Location === "pokhara" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara Highlights</p>
+<ul>
+  <li>Morning visit to Phewa Lake and Peace Pagoda</li>
+  <li>Short stop at Davis Falls and Gupteshwor Cave</li>
+  <li>Lunch and departure from Pokhara</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Mustang Exploration</p>
+  <ul>
+    <li>Fly or drive to Jomsom, gateway to Mustang</li>
+    <li>Visit Jomsom Bazaar and rest</li>
+    <li>Prepare for trek, check gear</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Trek to Kagbeni</p>
+  <ul>
+    <li>Short trek to Kagbeni village</li>
+    <li>Explore ancient village and monasteries</li>
+    <li>Overnight stay in traditional guesthouse</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Trek to Chele</p>
+  <ul>
+    <li>Trek through desert-like landscapes</li>
+    <li>Visit cave monasteries and viewpoints</li>
+    <li>Stay overnight in Chele</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Trek to Ghiling</p>
+  <ul>
+    <li>Continue trek to Ghiling village</li>
+    <li>Experience local culture and hospitality</li>
+    <li>Overnight stay at guesthouse</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Trek to Lo Manthang</p>
+  <ul>
+    <li>Reach the walled capital of Mustang, Lo Manthang</li>
+    <li>Explore ancient palace, monasteries, and markets</li>
+    <li>Overnight in Lo Manthang</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Cultural Day in Lo Manthang</p>
+  <ul>
+    <li>Visit Chhoser caves</li>
+    <li>Attend local festivals or interact with locals</li>
+    <li>Enjoy traditional Mustang cuisine</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Return to Jomsom</p>
+  <ul>
+    <li>Trek back to Jomsom</li>
+    <li>Relax and prepare for onward journey</li>
+    <li>Farewell dinner in Jomsom</li>
+  </ul>
+`;
+      } else if (Location === "mustang" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  ll dinner in Jomsom</li>
+  </ul><p style="font-weight: bold;">Day 1: Arrival & Tiji Festival Area / Jomsom</p>
+<ul>
+  <li>Arrive in Jomsom and check in at a lodge or guesthouse</li>
+  <li>Acclimatize and enjoy views of the Dhaulagiri and Annapurna ranges</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Trek to Kagbeni</p>
+<ul>
+  <li>Drive or trek to Kagbeni village</li>
+  <li>Explore the old monastery and village streets</li>
+  <li>Overnight in Kagbeni</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Trek to Chele / Luri</p>
+<ul>
+  <li>Trek along the Kali Gandaki River valley to Chele or Luri</li>
+  <li>Enjoy traditional Tibetan-style villages and landscapes</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Trek to Lo Manthang</p>
+<ul>
+  <li>Trek to Lo Manthang, the walled capital of Upper Mustang</li>
+  <li>Explore the ancient city walls, monasteries, and streets</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Lo Manthang Exploration</p>
+<ul>
+  <li>Visit Thubchen Gompa, Chhode Gompa, and local villages nearby</li>
+  <li>Enjoy panoramic views of the trans-Himalayan landscape</li>
+  <li>Evening cultural experience with local music and dance</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Return & Departure</p>
+<ul>
+  <li>Trek back to Kagbeni or Jomsom</li>
+  <li>Farewell breakfast and departure from Mustang region</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Jomsom</p>
+<ul>
+  <li>Arrive in Jomsom and check in at a lodge or guesthouse</li>
+  <li>Acclimatize and enjoy views of Annapurna and Dhaulagiri ranges</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Trek to Kagbeni</p>
+<ul>
+  <li>Trek to Kagbeni village along the Kali Gandaki River</li>
+  <li>Explore the old monastery and village streets</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Trek to Chele / Luri</p>
+<ul>
+  <li>Trek through traditional Tibetan-style villages and landscapes</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Trek to Lo Manthang</p>
+<ul>
+  <li>Arrive in Lo Manthang and explore the walled city</li>
+  <li>Visit monasteries and interact with locals</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Return & Departure</p>
+<ul>
+  <li>Trek back to Kagbeni or Jomsom</li>
+  <li>Farewell breakfast and departure from Mustang region</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Jomsom</p>
+<ul>
+  <li>Arrive in Jomsom and check in at a lodge or guesthouse</li>
+  <li>Acclimatize and enjoy mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Trek to Kagbeni</p>
+<ul>
+  <li>Trek along Kali Gandaki River to Kagbeni village</li>
+  <li>Explore monastery and local streets</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Trek to Lo Manthang</p>
+<ul>
+  <li>Arrive in Lo Manthang</li>
+  <li>Visit Thubchen Gompa and explore the walled city</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Return & Departure</p>
+<ul>
+  <li>Trek back to Kagbeni or Jomsom</li>
+  <li>Farewell breakfast and departure</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Jomsom</p>
+<ul>
+  <li>Arrive in Jomsom and acclimatize</li>
+  <li>Evening walk to enjoy Annapurna and Dhaulagiri views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Trek to Kagbeni & Lo Manthang</p>
+<ul>
+  <li>Morning trek to Kagbeni and then onward to Lo Manthang</li>
+  <li>Explore walled city and monasteries</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Return & Departure</p>
+<ul>
+  <li>Trek back to Jomsom</li>
+  <li>Farewell and departure</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Kagbeni</p>
+<ul>
+  <li>Arrive in Jomsom and trek to Kagbeni village</li>
+  <li>Evening visit to the local monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Lo Manthang Highlights & Departure</p>
+<ul>
+  <li>Short visit to Lo Manthang or nearby villages</li>
+  <li>Return to Jomsom and departure</li>
+</ul>
+`;
+      } else if (Location === "mustang" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Mustang Highlights</p>
+<ul>
+  <li>Visit Kagbeni village and monastery</li>
+  <li>Optional short visit to Lo Manthang outskirts</li>
+  <li>Enjoy local scenery before departure</li>
+</ul>
+`;
+
+      } else if (Location === "lumbini" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Peaceful Start</p>
+  <ul>
+    <li>Arrive at Lumbini and check into a hotel or monastery guesthouse</li>
+    <li>Visit the Sacred Garden and Maya Devi Temple</li>
+    <li>Evening meditation or stroll around the monastic zone</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Monastic Zone Exploration</p>
+  <ul>
+    <li>Visit monasteries built by various countries</li>
+    <li>Explore the World Peace Pagoda and pond</li>
+    <li>Attend prayer sessions if possible</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Cultural & Historical Sites</p>
+  <ul>
+    <li>Visit Ashoka Pillar and Lumbini Museum</li>
+    <li>Walk or bike around the UNESCO World Heritage Site</li>
+    <li>Evening visit to local markets</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Surrounding Attractions</p>
+  <ul>
+    <li>Visit Tilaurakot, the ancient capital of the Sakya kingdom</li>
+    <li>Explore Gotihawa and Kudan Stupa nearby</li>
+    <li>Return to Lumbini for rest</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Spiritual Day</p>
+  <ul>
+    <li>Participate in yoga or meditation workshops</li>
+    <li>Visit local temples or participate in community service</li>
+    <li>Enjoy vegetarian meals</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Leisure & Reflection</p>
+  <ul>
+    <li>Free day to relax, journal, or explore at your own pace</li>
+    <li>Optional visit to nearby villages or markets</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Departure</p>
+  <ul>
+    <li>Morning meditation or temple visit</li>
+    <li>Pack and check out</li>
+    <li>Transfer to airport or bus station</li>
+  </ul>
+`;
+      } else if (Location === "lumbini" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Evening Stroll</p>
+<ul>
+  <li>Arrive in Lumbini and check in to your hotel</li>
+  <li>Evening walk around Lumbini Bazaar</li>
+  <li>Try local cuisine like dal-bhat and sel roti</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: The Sacred Garden & Maya Devi Temple</p>
+<ul>
+  <li>Visit Maya Devi Temple (UNESCO site) – birthplace of Buddha</li>
+  <li>Explore Sacred Pond (Puskarini) and Ashokan Pillar</li>
+  <li>Walk around the Sacred Garden for meditation</li>
+  <li>Evening chanting session in a monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Eastern Monastic Zone</p>
+<ul>
+  <li>Explore Theravada Buddhist monasteries</li>
+  <li>Myanmar Golden Monastery</li>
+  <li>Thai Monastery</li>
+  <li>Cambodian Monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Western Monastic Zone</p>
+<ul>
+  <li>Visit Mahayana & Vajrayana monasteries</li>
+  <li>Chinese Monastery</li>
+  <li>Korean Monastery</li>
+  <li>German Monastery</li>
+  <li>Sunset meditation at World Peace Pagoda</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Kapilvastu & Tilaurakot Excursion</p>
+<ul>
+  <li>Day trip to Tilaurakot (Buddha's palace ruins)</li>
+  <li>Visit Kapilvastu Museum</li>
+  <li>Stop at Gotihawa and Kudan Buddhist sites</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Nature & Departure</p>
+<ul>
+  <li>Visit Lumbini Crane Sanctuary for birdwatching</li>
+  <li>Shopping for handicrafts and Buddhist souvenirs</li>
+  <li>Departure from Lumbini</li>
+</ul>
+`;
+      } else if (Location === "lumbini" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Evening Stroll</p>
+<ul>
+  <li>Arrive in Lumbini and check in to your hotel</li>
+  <li>Evening walk around Lumbini Bazaar</li>
+  <li>Try local cuisine like dal-bhat and sel roti</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: The Sacred Garden & Maya Devi Temple</p>
+<ul>
+  <li>Visit Maya Devi Temple (UNESCO site) – birthplace of Buddha</li>
+  <li>Explore Sacred Pond (Puskarini) and Ashokan Pillar</li>
+  <li>Walk around the Sacred Garden for meditation</li>
+  <li>Evening chanting session in a monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Eastern Monastic Zone</p>
+<ul>
+  <li>Explore Theravada Buddhist monasteries</li>
+  <li>Myanmar Golden Monastery</li>
+  <li>Thai Monastery</li>
+  <li>Cambodian Monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Western Monastic Zone</p>
+<ul>
+  <li>Visit Mahayana & Vajrayana monasteries</li>
+  <li>Chinese Monastery</li>
+  <li>Korean Monastery</li>
+  <li>German Monastery</li>
+  <li>Sunset meditation at World Peace Pagoda</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Kapilvastu & Departure</p>
+<ul>
+  <li>Morning day trip to Tilaurakot (Buddha's palace ruins)</li>
+  <li>Visit Kapilvastu Museum</li>
+  <li>Return to Lumbini for last-minute shopping</li>
+  <li>Departure from Lumbini</li>
+</ul>
+`;
+      } else if (Location === "lumbini" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Evening Stroll</p>
+<ul>
+  <li>Arrive in Lumbini and check in to your hotel</li>
+  <li>Evening walk around Lumbini Bazaar</li>
+  <li>Try local cuisine like dal-bhat and sel roti</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: The Sacred Garden & Maya Devi Temple</p>
+<ul>
+  <li>Visit Maya Devi Temple (UNESCO site) – birthplace of Buddha</li>
+  <li>Explore Sacred Pond (Puskarini) and Ashokan Pillar</li>
+  <li>Walk around the Sacred Garden for meditation</li>
+  <li>Evening chanting session in a monastery</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Monastic Zones</p>
+<ul>
+  <li>Visit Eastern Monastic Zone (Myanmar, Thai, Cambodian monasteries)</li>
+  <li>Visit Western Monastic Zone (Chinese, Korean, German monasteries)</li>
+  <li>Sunset meditation at World Peace Pagoda</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Kapilvastu & Departure</p>
+<ul>
+  <li>Morning trip to Tilaurakot (Buddha's palace ruins)</li>
+  <li>Visit Kapilvastu Museum</li>
+  <li>Return to Lumbini for shopping</li>
+  <li>Departure from Lumbini</li>
+</ul>
+`;
+      } else if (Location === "lumbini" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Evening Stroll</p>
+<ul>
+  <li>Arrive in Lumbini and check in to your hotel</li>
+  <li>Evening walk around Lumbini Bazaar</li>
+  <li>Try local cuisine like dal-bhat and sel roti</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Sacred Garden & Monastic Zone</p>
+<ul>
+  <li>Visit Maya Devi Temple, Sacred Pond, and Ashokan Pillar</li>
+  <li>Explore Sacred Garden for meditation</li>
+  <li>Visit Eastern Monastic Zone (Myanmar, Thai, Cambodian monasteries)</li>
+  <li>Visit Western Monastic Zone (Chinese, Korean, German monasteries)</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Kapilvastu & Departure</p>
+<ul>
+  <li>Morning trip to Tilaurakot (Buddha's palace ruins)</li>
+  <li>Visit Kapilvastu Museum</li>
+  <li>Return to Lumbini for shopping</li>
+  <li>Departure from Lumbini</li>
+</ul>
+`;
+      } else if (Location === "lumbini" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Sacred Garden Exploration</p>
+<ul>
+  <li>Arrive in Lumbini and check in to your hotel</li>
+  <li>Visit Maya Devi Temple, Sacred Pond, and Ashokan Pillar</li>
+  <li>Walk around the Sacred Garden</li>
+  <li>Evening visit to nearby monasteries</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Monastic Zones & Departure</p>
+<ul>
+  <li>Visit Eastern Monastic Zone (Myanmar, Thai, Cambodian monasteries)</li>
+  <li>Visit Western Monastic Zone (Chinese, Korean, German monasteries)</li>
+  <li>Optional quick trip to Tilaurakot if time allows</li>
+  <li>Departure from Lumbini</li>
+</ul>
+`;
+      } else if (Location === "lumbini" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Lumbini Highlights</p>
+<ul>
+  <li>Visit Maya Devi Temple (birthplace of Buddha)</li>
+  <li>Explore Sacred Pond and Ashokan Pillar</li>
+  <li>Quick walk through Eastern and Western Monastic Zones</li>
+  <li>Enjoy local cuisine before departure</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Arrival & Preparation</p>
+  <ul>
+    <li>Arrive in Kathmandu and prepare for trek</li>
+    <li>Check gear and permits</li>
+    <li>Rest and early dinner</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 2: Drive to Syabrubesi</p>
+  <ul>
+    <li>Drive to Syabrubesi (approx. 6-7 hours)</li>
+    <li>Rest at guesthouse</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 3: Trek to Lama Hotel</p>
+  <ul>
+    <li>Begin trek through forested trails</li>
+    <li>Cross suspension bridges over Langtang River</li>
+    <li>Overnight stay at Lama Hotel</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 4: Trek to Langtang Village</p>
+  <ul>
+    <li>Continue trek to Langtang village</li>
+    <li>Explore local Tamang culture</li>
+    <li>Stay overnight in a teahouse</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 5: Trek to Kyanjin Gompa</p>
+  <ul>
+    <li>Ascend to Kyanjin Gompa</li>
+    <li>Visit the monastery and cheese factory</li>
+    <li>Enjoy stunning mountain views</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 6: Exploration & Rest</p>
+  <ul>
+    <li>Optional hike to Tserko Ri for panoramic views</li>
+    <li>Relax in Kyanjin Gompa village</li>
+  </ul>
+
+  <p style="font-weight: bold;">Day 7: Return Journey</p>
+  <ul>
+    <li>Trek back to Syabrubesi</li>
+    <li>Drive back to Kathmandu</li>
+    <li>Rest and celebration dinner</li>
+  </ul>
+`;
+      } else if (Location === "langtang" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Kathmandu to Syabrubesi</p>
+<ul>
+  <li>Drive from Kathmandu to Syabrubesi (approx. 7–8 hours)</li>
+  <li>Enjoy scenic mountain views along the way</li>
+  <li>Overnight stay in Syabrubesi</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Syabrubesi to Lama Hotel</p>
+<ul>
+  <li>Trek through forests and along the Langtang Khola</li>
+  <li>Pass small villages and enjoy natural waterfalls</li>
+  <li>Overnight at Lama Hotel</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Lama Hotel to Langtang Village</p>
+<ul>
+  <li>Gradual climb through forests and yak pastures</li>
+  <li>Reach Langtang Village, a traditional Tamang settlement</li>
+  <li>Explore local culture and traditions</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Langtang Village to Kyanjin Gompa</p>
+<ul>
+  <li>Short trek to Kyanjin Gompa (3–4 hours)</li>
+  <li>Visit the monastery and local cheese factory</li>
+  <li>Enjoy panoramic Himalayan views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Kyanjin Gompa Exploration</p>
+<ul>
+  <li>Hike to Kyanjin Ri or Tserko Ri for sunrise views</li>
+  <li>Relax and explore the high-altitude village</li>
+  <li>Overnight at Kyanjin Gompa</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Kyanjin Gompa to Syabrubesi & Departure</p>
+<ul>
+  <li>Descend back to Syabrubesi via Langtang Village and Lama Hotel</li>
+  <li>Drive back to Kathmandu or continue your journey</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Kathmandu to Syabrubesi</p>
+<ul>
+  <li>Drive from Kathmandu to Syabrubesi (approx. 7–8 hours)</li>
+  <li>Enjoy scenic views of hills and mountains</li>
+  <li>Overnight stay in Syabrubesi</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Syabrubesi to Lama Hotel</p>
+<ul>
+  <li>Trek through lush forests along Langtang Khola</li>
+  <li>Pass small Tamang villages and waterfalls</li>
+  <li>Overnight at Lama Hotel</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Lama Hotel to Kyanjin Gompa</p>
+<ul>
+  <li>Pass through Langtang Village en route</li>
+  <li>Arrive at Kyanjin Gompa and visit the monastery</li>
+  <li>Enjoy views of Langtang Lirung and surrounding peaks</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Kyanjin Gompa Exploration</p>
+<ul>
+  <li>Morning hike to Kyanjin Ri or Tserko Ri for panoramic views</li>
+  <li>Visit the local cheese factory</li>
+  <li>Relax and explore the village</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Kyanjin Gompa to Syabrubesi & Departure</p>
+<ul>
+  <li>Trek back down through Lama Hotel</li>
+  <li>Return to Syabrubesi and drive to Kathmandu</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Kathmandu to Syabrubesi</p>
+<ul>
+  <li>Drive from Kathmandu to Syabrubesi (approx. 7–8 hours)</li>
+  <li>Enjoy scenic mountain and valley views along the route</li>
+  <li>Overnight stay in Syabrubesi</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Syabrubesi to Langtang Village</p>
+<ul>
+  <li>Trek through Lama Hotel and lush forests</li>
+  <li>Pass waterfalls and yak pastures</li>
+  <li>Arrive at Langtang Village and explore local culture</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Langtang Village to Kyanjin Gompa</p>
+<ul>
+  <li>Short trek to Kyanjin Gompa</li>
+  <li>Visit the monastery and local cheese factory</li>
+  <li>Optional short hike for panoramic views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Kyanjin Gompa to Syabrubesi & Departure</p>
+<ul>
+  <li>Early morning hike to Kyanjin Ri for sunrise views (optional)</li>
+  <li>Descend via Langtang Village and Lama Hotel</li>
+  <li>Drive back to Kathmandu or continue your journey</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Kathmandu to Syabrubesi</p>
+<ul>
+  <li>Drive from Kathmandu to Syabrubesi (approx. 7–8 hours)</li>
+  <li>Enjoy mountain and valley scenery along the route</li>
+  <li>Overnight in Syabrubesi</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Syabrubesi to Kyanjin Gompa</p>
+<ul>
+  <li>Trek through Lama Hotel and Langtang Village</li>
+  <li>Arrive at Kyanjin Gompa and explore the monastery</li>
+  <li>Enjoy views of Langtang Lirung and surrounding peaks</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Kyanjin Gompa to Syabrubesi & Departure</p>
+<ul>
+  <li>Optional morning hike to Kyanjin Ri for sunrise views</li>
+  <li>Descend via Langtang Village and Lama Hotel</li>
+  <li>Drive back to Kathmandu</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Kathmandu to Langtang Village</p>
+<ul>
+  <li>Early morning drive from Kathmandu to Syabrubesi</li>
+  <li>Begin trek towards Langtang Village via Lama Hotel</li>
+  <li>Overnight in Langtang Village</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Langtang Village to Kathmandu</p>
+<ul>
+  <li>Optional short hike towards Kyanjin Gompa for views</li>
+  <li>Trek back to Syabrubesi</li>
+  <li>Drive to Kathmandu</li>
+</ul>
+`;
+      } else if (Location === "langtang" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Langtang Highlights</p>
+<ul>
+  <li>Scenic helicopter flight to Langtang Valley (optional for short trips)</li>
+  <li>Explore Kyanjin Gompa and surrounding peaks</li>
+  <li>Enjoy panoramic Himalayan views</li>
+  <li>Return to Kathmandu the same day</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "7") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to Ghandruk</p>
+<ul>
+  <li>Drive from Pokhara to Nayapul</li>
+  <li>Trek to Ghandruk, a beautiful Gurung village</li>
+  <li>Explore traditional houses and enjoy mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Ghandruk to Chhomrong</p>
+<ul>
+  <li>Trek through forests and terraced fields</li>
+  <li>Enjoy views of Annapurna South and Machapuchare</li>
+  <li>Overnight stay in Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Chhomrong to Himalaya</p>
+<ul>
+  <li>Descend to Chhomrong Khola and climb to Sinuwa</li>
+  <li>Continue trekking through bamboo forests</li>
+  <li>Overnight at Himalaya</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Himalaya to Annapurna Base Camp</p>
+<ul>
+  <li>Pass through Deurali and Machapuchare Base Camp (MBC)</li>
+  <li>Continue to Annapurna Base Camp (ABC)</li>
+  <li>Enjoy stunning views of Annapurna I, Hiunchuli, and other peaks</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Annapurna Base Camp to Bamboo</p>
+<ul>
+  <li>Wake up early for sunrise views at ABC</li>
+  <li>Begin descent via MBC and Himalaya</li>
+  <li>Overnight stay in Bamboo</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Bamboo to Jhinu Danda</p>
+<ul>
+  <li>Trek to Chhomrong and descend to Jhinu Danda</li>
+  <li>Relax in the natural hot springs by the river</li>
+</ul>
+
+<p style="font-weight: bold;">Day 7: Jhinu Danda to Pokhara</p>
+<ul>
+  <li>Trek to Nayapul</li>
+  <li>Drive back to Pokhara and enjoy lakeside relaxation</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "6") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to Ghandruk</p>
+<ul>
+  <li>Drive from Pokhara to Nayapul</li>
+  <li>Trek to Ghandruk, a scenic Gurung village</li>
+  <li>Explore local culture and enjoy mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Ghandruk to Chhomrong</p>
+<ul>
+  <li>Trek through terraced fields and forests</li>
+  <li>Overnight stay in Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Chhomrong to Himalaya</p>
+<ul>
+  <li>Descend to Chhomrong Khola, then climb to Sinuwa</li>
+  <li>Continue trekking through bamboo forests</li>
+  <li>Overnight at Himalaya</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Himalaya to Annapurna Base Camp</p>
+<ul>
+  <li>Pass through Deurali and Machapuchare Base Camp (MBC)</li>
+  <li>Reach Annapurna Base Camp (ABC) and enjoy panoramic mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Annapurna Base Camp to Bamboo</p>
+<ul>
+  <li>Early morning sunrise at ABC</li>
+  <li>Begin descent via MBC and Himalaya</li>
+  <li>Overnight stay at Bamboo</li>
+</ul>
+
+<p style="font-weight: bold;">Day 6: Bamboo to Pokhara</p>
+<ul>
+  <li>Trek down to Nayapul</li>
+  <li>Drive back to Pokhara</li>
+  <li>Relax by the lakeside or enjoy local cuisine</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "5") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to Ghandruk</p>
+<ul>
+  <li>Drive from Pokhara to Nayapul</li>
+  <li>Trek to Ghandruk and explore the Gurung village</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Ghandruk to Chhomrong</p>
+<ul>
+  <li>Trek through forests and terraced fields</li>
+  <li>Overnight stay in Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Chhomrong to Annapurna Base Camp</p>
+<ul>
+  <li>Pass through Sinuwa, Bamboo, and Deurali</li>
+  <li>Reach ABC and enjoy mountain views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Annapurna Base Camp to Chhomrong</p>
+<ul>
+  <li>Morning sunrise at ABC</li>
+  <li>Descend via Deurali and Bamboo</li>
+  <li>Overnight at Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 5: Chhomrong to Pokhara</p>
+<ul>
+  <li>Trek down to Nayapul</li>
+  <li>Drive back to Pokhara</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "4") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to Chhomrong</p>
+<ul>
+  <li>Drive to Nayapul and trek directly to Chhomrong</li>
+  <li>Explore the village and overnight stay</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Chhomrong to Annapurna Base Camp</p>
+<ul>
+  <li>Trek via Sinuwa, Bamboo, and Deurali</li>
+  <li>Reach ABC in the evening</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: Annapurna Base Camp Exploration</p>
+<ul>
+  <li>Early morning sunrise at ABC</li>
+  <li>Short hikes around the base camp</li>
+  <li>Begin descent to Bamboo or Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 4: Bamboo/Chhomrong to Pokhara</p>
+<ul>
+  <li>Complete descent to Nayapul</li>
+  <li>Drive back to Pokhara</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "3") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to Chhomrong</p>
+<ul>
+  <li>Drive to Nayapul and trek to Chhomrong</li>
+  <li>Overnight stay in Chhomrong</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: Chhomrong to Annapurna Base Camp</p>
+<ul>
+  <li>Full-day trek via Bamboo, Sinuwa, and Deurali</li>
+  <li>Reach ABC and enjoy sunset views</li>
+</ul>
+
+<p style="font-weight: bold;">Day 3: ABC to Pokhara</p>
+<ul>
+  <li>Early sunrise at ABC</li>
+  <li>Descend back to Nayapul and drive to Pokhara</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "2") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: Pokhara to ABC</p>
+<ul>
+  <li>Drive to Nayapul and start trek early</li>
+  <li>Quick trek via Chhomrong, Sinuwa, Bamboo, and Deurali</li>
+  <li>Reach ABC in the evening</li>
+</ul>
+
+<p style="font-weight: bold;">Day 2: ABC to Pokhara</p>
+<ul>
+  <li>Sunrise at ABC</li>
+  <li>Descend rapidly to Nayapul</li>
+  <li>Drive back to Pokhara</li>
+</ul>
+`;
+      } else if (Location === "annapurna base camp" && Duration === "1") {
+        document.getElementById("message").innerHTML = `
+  <p style="font-weight: bold;">Day 1: ABC Highlights</p>
+<ul>
+  <li>Helicopter flight from Pokhara to Annapurna Base Camp (optional)</li>
+  <li>Enjoy panoramic mountain views</li>
+  <li>Visit Machapuchare Base Camp</li>
+  <li>Return to Pokhara the same day</li>
+</ul>
+`;
+
+      } else if (Location === "") {
+        document.getElementById("message").innerHTML = "Please select a destination to build your itinerary.";
+      } else {
+        document.getElementById("message").innerHTML = "Sorry, itinerary for this destination is not available yet.";
+      }
     }
-    else{
-      document.getElementById("message").innerHTML = "please select the location of travel";
-    }
-  }
-</script>
-
-    <section class="itinerary-preview">
-        <div class="container">
-            <h2>Your Itinerary</h2>
-            <div class="itinerary-list">
-                <p id="message">Your planned trip will appear here...</p>
-            </div>
-            <button type="button" class="save-itinerary">Save Itinerary</button>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Trip planner. All rights reserved.</p>
-            <p>Contact us at <a href="mailto:info@tripplanner.com">info@tripplanner.com</a></p>
-        </div>
-    </footer>
+  </script>
+  
 </body>
+
 </html>
