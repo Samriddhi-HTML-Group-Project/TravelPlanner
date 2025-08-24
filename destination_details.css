@@ -1,0 +1,263 @@
+:root {
+  --primary-bg: #fff;
+  --section-spacing: 2.5rem;
+  --section-radius: 18px;
+  --section-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  --max-width: 900px;
+  --accent: #ff5a5f; /* Airbnb coral */
+  --highlight-bg: #f7f7f7;
+  --highlight-border: #ffe0e3;
+}
+    body {
+      background: var(--primary-bg);
+      color: #222;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--section-spacing);
+    }
+
+    /* Header Row: Title left, Heart right */
+    .details-header {
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+      border-radius: 18px;
+      margin-bottom: 0.5rem;
+      padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .destination-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: #222;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+    .heart-btn {
+      background: linear-gradient(145deg, #fff 60%, #ffe0e3 100%);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0.6rem 1.3rem;
+      border-radius: 50px;
+      box-shadow: 0 6px 24px 0 rgba(255,90,95,0.18), 0 2px 12px 0 rgba(0,0,0,0.13);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .heart-btn:active {
+      transform: scale(1.15);
+    }
+    .heart-icon {
+      color: transparent;
+      font-size: 2.1rem;
+      line-height: 1;
+  -webkit-text-stroke: 2px var(--accent);
+  transition: color 0.2s, -webkit-text-stroke-color 0.2s;
+    }
+    .heart-btn.active .heart-icon {
+      color: var(--accent);
+  -webkit-text-stroke: 0px var(--accent);
+  transition: color 0.2s;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .destination-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: #222;
+      letter-spacing: 1px;
+    }
+    /* Section base style */
+    section {
+      background: #fff;
+      border-radius: var(--section-radius);
+      box-shadow: var(--section-shadow);
+      padding: 2rem 1.5rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+    /* Gallery Section: Airbnb style */
+    .gallery-section {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+    }
+    .gallery-flex {
+      display: flex;
+      gap: 1.2rem;
+      width: 100%;
+      min-height: 320px;
+      max-height: 400px;
+    }
+    .main-img {
+      flex: 2 1 0;
+      min-width: 0;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #f0f0f0;
+      border-radius: 16px;
+      border: 1.5px dashed #d0d0d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+    .main-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      image-rendering: auto;
+    }
+    .side-imgs {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      min-width: 0;
+      justify-content: stretch;
+    }
+    .side-imgs .gallery-img-placeholder {
+      flex: 1 1 0;
+      aspect-ratio: 4/3;
+      background: #f0f0f0;
+      border-radius: 16px;
+      border: 1.5px dashed #d0d0d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      font-size: 1.1rem;
+      font-style: italic;
+      overflow: hidden;
+    }
+    .side-imgs .gallery-img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      image-rendering: auto;
+    }
+  /* (Removed duplicate .side-imgs and .side-imgs .gallery-img-placeholder blocks) */
+    /* Description Section */
+    .desc-section {
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+      margin-top: 1.2rem;
+    }
+    .desc-placeholder {
+      min-height: 60px;
+      background: none;
+      border-radius: 0;
+      border: none;
+      padding: 0 0 1.2rem 0;
+      color: #222;
+      font-size: 1.1rem;
+      font-style: normal;
+      margin-top: 0.5rem;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    /* Highlights Section */
+    .highlights-section {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin-top: 2rem;
+    }
+    .highlights-list {
+  list-style: disc inside;
+  margin: 0 0 0 1.2rem;
+  padding: 0;
+  display: block;
+    }
+    .highlight-card {
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: #222;
+  font-size: 1.05rem;
+  font-style: normal;
+  text-align: left;
+  padding: 0.3rem 0;
+  box-shadow: none;
+  display: list-item;
+  min-width: 0;
+  min-height: 0;
+    }
+    /* Remove old favorite button section styles (now in header) */
+    /* Responsive */
+@media (max-width: 900px) {
+  .container {
+    padding: 1.2rem 0.2rem;
+    gap: 1.2rem;
+  }
+  .destination-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1.2rem 0;
+    color: #222;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+}
+@media (max-width: 700px) {
+  .gallery-flex {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .main-img, .side-imgs .gallery-img-placeholder {
+    max-width: 100%;
+    aspect-ratio: 16/9;
+  }
+  .side-imgs {
+    flex-direction: row;
+    gap: 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .destination-title {
+    font-size: 1.3rem;
+  }
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .heart-btn {
+    align-self: flex-end;
+    padding: 0.4rem 0.8rem;
+  }
+  .gallery-flex {
+    gap: 0.4rem;
+  }
+  .desc-placeholder {
+    padding: 0.8rem 0.7rem;
+  }
+}

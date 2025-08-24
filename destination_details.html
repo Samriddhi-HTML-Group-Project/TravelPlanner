@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destination Details</title>
+  <link rel="stylesheet" href="destination_details.css" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header: Title left, Favorite right -->
+    <header class="details-header">
+      <div class="header-row">
+        <h1 id="destn-title" class="destination-title"><!-- Destination Name --></h1>
+        <button class="favorite-btn heart-btn" aria-label="Save to Favorites">
+          <span class="heart-icon">&#10084;</span>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Gallery: Main image left, two stacked right -->
+    <section class="gallery-section" aria-label="Gallery">
+      <div class="gallery-flex">
+        <div id="main-img" class="main-img gallery-img-placeholder">Main Image</div>
+        <div class="side-imgs">
+          <div id="side-img-1" class="gallery-img-placeholder">Image 2</div>
+          <div id="side-img-2" class="gallery-img-placeholder">Image 3</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Short Description -->
+    <section class="desc-section" aria-label="Short Description">
+      <div style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Description</div>
+      <div id="destn-description" class="desc-placeholder">Short description goes here...</div>
+    </section>
+    
+    <!-- Highlights -->
+    <section class="highlights-section" aria-label="Highlights">
+      <h2 style="margin-bottom:0.3rem; margin-top:0; font-size:1.5rem; font-weight:600; color:#222;">Highlights</h2>
+      <ul id="highlights-list" class="highlights-list">
+        <!-- Highlights will be populated dynamically -->
+      </ul>
+    </section>
+  </div>
+  <!--
+    All sections above are placeholders for dynamic content from data.js
+    Replace placeholder text and elements with real data in your JS.
+    -->
+    <script src="destination_details.js" type="module"></script>
+  </body>
+  </html>
+  
