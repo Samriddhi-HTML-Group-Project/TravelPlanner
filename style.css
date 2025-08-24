@@ -1,3 +1,69 @@
+/* Airbnb-style search dropdown and button */
+.airbnb-search {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto 0 auto;
+  max-width: 420px;
+  width: 100%;
+  justify-content: center;
+}
+.airbnb-dropdown {
+  appearance: none;
+  background: #fff;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 0.85rem 1.5rem;
+  font-size: 1.1rem;
+  color: #222;
+  font-family: inherit;
+  font-weight: 500;
+  outline: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-width: 180px;
+  cursor: pointer;
+}
+.airbnb-dropdown:focus, .airbnb-dropdown:hover {
+  box-shadow: 0 6px 32px rgba(255,90,95,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  transform: scale(1.04);
+}
+.airbnb-dropdown option[disabled] {
+  color: #aaa;
+}
+.airbnb-search-btn {
+  background: linear-gradient(90deg, #ff5a5f 0%, #ffb347 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  padding: 0.85rem 2.2rem;
+  box-shadow: 0 2px 16px rgba(255,90,95,0.13), 0 1.5px 6px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+.airbnb-search-btn:hover, .airbnb-search-btn:focus {
+  background: linear-gradient(90deg, #ffb347 0%, #ff5a5f 100%);
+  box-shadow: 0 8px 32px rgba(255,90,95,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  transform: scale(1.05);
+}
+@media (max-width: 600px) {
+  .airbnb-search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    max-width: 98vw;
+  }
+  .airbnb-dropdown, .airbnb-search-btn {
+    width: 100%;
+    min-width: 0;
+    font-size: 1rem;
+    padding: 0.85rem 1.1rem;
+  }
+}
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -499,12 +565,15 @@ body.dark-mode .nav-dropdown > a {
   background-color: white;
   min-width: 220px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
+  border-radius: 18px;
   overflow: hidden;
   z-index: 1000;
   margin-top: 8px;
   border: 1px solid #e0e0e0;
-  /* Remove the padding from here */
+  transform: scale(0.97);
+  opacity: 0;
+  pointer-events: none;
+  transition: box-shadow 0.2s, border-radius 0.2s, transform 0.22s cubic-bezier(.4,1.4,.6,1), opacity 0.22s cubic-bezier(.4,1.4,.6,1);
 }
 
 body.dark-mode .dropdown-menu {
@@ -554,7 +623,10 @@ body.dark-mode .dropdown-menu li a:hover {
 .nav-dropdown:hover .dropdown-menu,
 .dropdown-menu:hover {
   display: block;
-  animation: fadeIn 0.3s ease;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.04);
+  animation: fadeIn 0.22s cubic-bezier(.4,1.4,.6,1);
 }
 
 /* Add invisible bridge between trigger and dropdown */
@@ -571,12 +643,12 @@ body.dark-mode .dropdown-menu li a:hover {
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
-    transform: translateY(-10px);
+    opacity: 0.4;
+    transform: scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1.04);
   }
 }
 

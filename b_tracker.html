@@ -24,8 +24,17 @@
                     <input type="number" id="total-budget" placeholder="e.g., 50000" aria-label="Enter total budget">
                 </div>
                 <div class="form-group">
-                    <label for="trip-duration">Trip Duration (Days)</label>
-                    <input type="number" id="trip-duration" min="1" max="30" placeholder="e.g., 7" aria-label="Enter trip duration">
+                    <label for="trip-duration-select">Trip Duration (Days)</label>
+                    <select id="trip-duration-select" aria-label="Select trip duration" class="select-placeholder">
+                        <option value="" selected hidden>Enter duration of days</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
                 </div>
                 <button type="button" class="set-budget">Set Budget</button>
             </div>
@@ -62,6 +71,7 @@
                 <ul id="expense-history">
                     <li>No expenses recorded yet...</li>
                 </ul>
+                <button class="save-expenses-btn">Save your expenses</button>
             </div>
         </div>
     </section>

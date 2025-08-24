@@ -45,7 +45,7 @@
     <li><a href="itinerary.html">Itinerary Builder</a></li>
     <li><a href="b_tracker.html">Budget and Expense Tracker</a></li>
     <li><a href="#travel-notes">Travel Notes/Journal</a></li>
-    <li><a href="#travel-stats">Travel Stats</a></li>
+    <!-- Travel Stats removed from Features dropdown and added to hamburger menu-->
   </ul>
 </li>
 
@@ -55,7 +55,7 @@
 </ul>
 
     <div class="nav-right">
-      <button class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
+      <button id="navbar-loginBtn" class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
       <button class="dark-toggle" onclick="toggleDarkMode()">
         <i data-lucide="moon"></i>
       </button>
@@ -64,9 +64,17 @@
       <div class="profile-menu">
         <button class="profile-toggle" onclick="toggleProfileMenu()">☰</button>
         <div class="profile-dropdown" id="profileDropdown">
-          <div class="profile-item" onclick="showProfile()">
+          <div class="profile-item" id="profileSection">
             <i data-lucide="user"></i>
-            <span>Profile</span>
+            <span id="userEmail"></span>
+          </div>
+          <div class="profile-item" id="favLists">
+            <i data-lucide="heart"></i>
+            <span>Favorite Lists</span>
+          </div>
+          <div class="profile-item" id="travelStats">
+            <i data-lucide="bar-chart-2"></i>
+            <span>Travel Stats</span>
           </div>
           <div class="profile-item" id="logout-btn">
             <i data-lucide="log-out"></i>
@@ -94,16 +102,19 @@
         <h1>Your Adventure Starts Here</h1>
         <p>Plan your dream trip with us today!</p>
         <div class="destination-search">
-          <select name="dropdown-destinations" id="dropdown" class="destination-dropdown">
-            <option value="">🔍 Choose your destination...</option>
-            <option value="kathmandu-valley">Kathmandu Valley</option>
-            <option value="pokhara">Pokhara</option>
-            <option value="chitwan">Dhorpatan</option>
-            <option value="lumbini">Lumbini</option>
-            <option value="everest-region">Langtang</option>
-            <option value="annapurna-region">Annapurna Region</option>
-            <option value="others">Other Popular Destinations</option>
-          </select>
+            <select class="airbnb-dropdown" id="dropdown">
+              <option value="" disabled selected>Select a destination</option>
+              <option value="kathmandu">Kathmandu</option>
+              <option value="bhaktapur">Bhaktapur</option>
+              <option value="lalitpur">Lalitpur</option>
+              <option value="annapurna">Annapurna Base Camp</option>
+              <option value="dhorpatan">Dhorpatan</option>
+              <option value="pokhara">Pokhara</option>
+              <option value="mustang">Mustang</option>
+              <option value="lumbini">Lumbini</option>
+              <option value="langtang">Langtang</option>
+            </select>
+            <button class="airbnb-search-btn" id="searchBtn">Search</button>
         </div>
 
       </div>

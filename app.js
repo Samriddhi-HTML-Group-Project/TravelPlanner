@@ -1,6 +1,6 @@
 // Firebase SDK import:
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 
 // Your Firebase config:
@@ -17,6 +17,41 @@ const firebaseConfig = {
 // Init Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+// Auth State Management
+const loginBtnEl = document.getElementById("navbar-loginBtn");
+const logoutBtnEl = document.getElementById("logout-btn");
+const userEmailEl = document.getElementById("userEmail");
+const profileSectionEl = document.getElementById("profileSection");
+const travelStatsEl = document.getElementById("travelStats");
+const favListsEl = document.getElementById("favLists");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    //  User is logged in
+    if (loginBtnEl) loginBtnEl.style.display = "none";
+    if (profileSectionEl) userEmailEl.textContent = "Logged in as:\n" + user.email;
+    if (favListsEl) favListsEl.style.display = "block";
+    if (travelStatsEl) travelStatsEl.style.display = "block";
+    if (logoutBtnEl) logoutBtnEl.style.display = "block";
+
+    // Redirect to homepage immediately if user is logged in
+    if (window.location.pathname.includes("login.html") || window.location.pathname.includes("signup.html")) {
+      window.location.replace("index.html");
+    }
+  } else {
+    //  User is logged out
+    if (loginBtnEl) loginBtnEl.style.display = "block";
+    if (profileSectionEl) {
+      userEmailEl.textContent = "Login to view profile";
+      profileSectionEl.onclick = showProfileStatus;
+    }
+    if (favListsEl) favListsEl.style.display = "none";
+    if (travelStatsEl) travelStatsEl.style.display = "none";
+    if (logoutBtnEl) logoutBtnEl.style.display = "none";
+  }
+});
+
 
 // SIGN UP with confirm password
 const signupBtn = document.getElementById('signup-btn');
@@ -46,7 +81,7 @@ if (signupBtn) {
       .then((userCredential) => {
         console.log('Signed up:', userCredential.user);
         alert('Signup successful! Redirecting to homepage...');
-        window.location.href = 'index.html';
+        window.location.replace('index.html');
       })
       .catch((error) => {
         console.error(error);
@@ -71,7 +106,7 @@ if (loginBtn) {
       .then((userCredential) => {
         console.log('Logged in:', userCredential.user);
         alert('Login successful! Redirecting to homepage...');
-        window.location.href = 'index.html';
+        window.location.replace('index.html'); 
       })
       .catch((error) => {
         console.error(error);
@@ -88,7 +123,7 @@ if (logoutBtn) {
       .then(() => {
         console.log('User signed out');
         alert('Logged out successfully!');
-        window.location.href = 'login.html';
+        window.location.replace('index.html');
       })
       .catch((error) => {
         console.error(error);

@@ -1,3 +1,36 @@
+/* Subtle placeholder for select */
+.select-placeholder option[value=""] {
+    color: #bbb !important;
+    font-weight: 400 !important;
+    opacity: 0.8;
+}
+/* Save Expenses Button */
+.save-expenses-btn {
+    display: block;
+    margin: 28px auto 0 auto;
+    padding: 14px 38px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #2980b9 0%, #6dd5fa 100%);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13), 0 1.5px 6px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+    outline: none;
+    letter-spacing: 0.5px;
+}
+.save-expenses-btn:hover, .save-expenses-btn:focus {
+    background: linear-gradient(90deg, #6dd5fa 0%, #2980b9 100%);
+    box-shadow: 0 8px 32px rgba(41,128,185,0.18), 0 2px 8px rgba(0,0,0,0.10);
+    transform: scale(1.05);
+}
+.save-expenses-btn:active {
+    background: linear-gradient(90deg, #2980b9 0%, #6dd5fa 100%);
+    box-shadow: 0 2px 8px rgba(41,128,185,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+    transform: scale(0.97);
+}
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;

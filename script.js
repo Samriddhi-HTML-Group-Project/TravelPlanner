@@ -10,6 +10,31 @@ const toggleDarkMode = () => {
   localStorage.setItem('darkMode', isDark);
 };
 
+// Make destination cards clickable to open details page
+document.querySelectorAll('#destinations .card').forEach(card => {
+  card.addEventListener('click', () => {
+    const id = card.dataset.id;
+    if (id) {
+      window.location.href = `destination_details.html?id=${encodeURIComponent(id)}`;
+    }
+  });
+});
+
+// Navigate to details page on dropdown change
+document.getElementById("searchBtn").addEventListener("click", function () {
+  const dropdown = document.getElementById("dropdown");
+  const selectedValue = dropdown.value;
+
+  if (selectedValue) {
+    // Redirect with query param just like grid panels
+    window.location.href = `destination_details.html?id=${selectedValue}`;
+  } else {
+    alert("Please select a destination first!");
+  }
+});
+
+
+
 // Toggle favorite for destinations
 const toggleFavorite = (id, iconElement) => {
   let favorites = JSON.parse(localStorage.getItem('favoriteDestinations')) || [];
@@ -32,8 +57,8 @@ const toggleProfileMenu = () => {
 };
 
 // Show profile function
-const showProfile = () => {
-  alert('Profile feature coming soon!');
+const showProfileStatus = () => {
+  alert('Please Log in first!');
 };
 
 // Close profile dropdown when clicking outside
