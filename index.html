@@ -17,7 +17,6 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
-  <script src="app.js" type="module"></script>
   
 </head>
 
@@ -26,20 +25,20 @@
   <div id="preloader">
     <div class="loader"></div>
   </div> -->
-
+  
   <!-- Scroll Progress
   <div id="scrollProgress"></div> -->
-
+  
   <!-- Navbar -->
   <nav>
     <div class="logo"><img src="/assects/Logo.png" height="100" width="110" alt="Logo"></div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-   <ul class="nav-links">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#destinations">Destinations</a></li>
-
-  <!-- Features Dropdown -->
-<li class="nav-dropdown">
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      
+      <!-- Features Dropdown -->
+      <li class="nav-dropdown">
   <a href="#features">Features ▾</a>
   <ul class="dropdown-menu">
     <li><a href="itinerary.html">Itinerary Builder</a></li>
@@ -50,33 +49,33 @@
 </li>
 
 
-  <li><a href="#about">About</a></li>
-  <li><a href="#contact">Contact</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 
-    <div class="nav-right">
-      <button id="navbar-loginBtn" class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
-      <button class="dark-toggle" onclick="toggleDarkMode()">
-        <i data-lucide="moon"></i>
-      </button>
-      
-      <!-- Profile Menu -->
-      <div class="profile-menu">
-        <button class="profile-toggle" onclick="toggleProfileMenu()">☰</button>
-        <div class="profile-dropdown" id="profileDropdown">
-          <div class="profile-item" id="profileSection">
-            <i data-lucide="user"></i>
-            <span id="userEmail"></span>
-          </div>
-          <div class="profile-item" id="favLists">
-            <i data-lucide="heart"></i>
-            <span>Favorite Lists</span>
-          </div>
-          <div class="profile-item" id="travelStats">
-            <i data-lucide="bar-chart-2"></i>
-            <span>Travel Stats</span>
-          </div>
-          <div class="profile-item" id="logout-btn">
+<div class="nav-right">
+  <button id="navbar-loginBtn" class="login-btn" type="button" onclick="window.location.href = 'login.html' ">Login</button>
+  <button class="dark-toggle" onclick="toggleDarkMode()">
+    <i data-lucide="moon"></i>
+  </button>
+  
+  <!-- Profile Menu -->
+  <div class="profile-menu">
+    <button class="profile-toggle" onclick="toggleProfileMenu()">☰</button>
+    <div class="profile-dropdown" id="profileDropdown">
+      <div class="profile-item" id="profileSection">
+        <i data-lucide="user"></i>
+        <span id="userEmail"></span>
+      </div>
+      <div class="profile-item" id="favLists">
+        <i data-lucide="heart"></i>
+        <span>Favorite Lists</span>
+      </div>
+      <div class="profile-item" id="travelStats">
+        <i data-lucide="bar-chart-2"></i>
+        <span>Travel Stats</span>
+      </div>
+      <div class="profile-item" id="logout-btn">
             <i data-lucide="log-out"></i>
             <span>Logout</span>
           </div>
@@ -84,7 +83,7 @@
       </div>
     </div>
   </nav>
-
+  
   <!-- Hero Section with Slider -->
   <section id="home" class="hero">
     <div class="slider-container">
@@ -97,98 +96,98 @@
       <div class="slide fade">
         <img src="/assects/slide3.jpg" alt="Slide 3">
       </div>
-
+      
       <div class="hero-overlay">
         <h1>Your Adventure Starts Here</h1>
         <p>Plan your dream trip with us today!</p>
         <div class="destination-search">
-            <select class="airbnb-dropdown" id="dropdown">
-              <option value="" disabled selected>Select a destination</option>
-              <option value="kathmandu">Kathmandu</option>
-              <option value="bhaktapur">Bhaktapur</option>
-              <option value="lalitpur">Lalitpur</option>
-              <option value="annapurna">Annapurna Base Camp</option>
-              <option value="dhorpatan">Dhorpatan</option>
-              <option value="pokhara">Pokhara</option>
-              <option value="mustang">Mustang</option>
-              <option value="lumbini">Lumbini</option>
-              <option value="langtang">Langtang</option>
-            </select>
+          <select class="airbnb-dropdown" id="dropdown">
+            <option value="" disabled selected>Select a destination</option>
+            <option value="kathmandu">Kathmandu</option>
+            <option value="bhaktapur">Bhaktapur</option>
+            <option value="lalitpur">Lalitpur</option>
+            <option value="annapurna">Annapurna Base Camp</option>
+            <option value="dhorpatan">Dhorpatan</option>
+            <option value="pokhara">Pokhara</option>
+            <option value="mustang">Mustang</option>
+            <option value="lumbini">Lumbini</option>
+            <option value="langtang">Langtang</option>
+          </select>
             <button class="airbnb-search-btn" id="searchBtn">Search</button>
         </div>
 
       </div>
     </div>
-
+    
   </section>
-
-
+  
+  
   <!-- Destinations -->
   <section id="destinations" class="section" data-aos="fade-up">
     <h2>Featured Destinations</h2>
-
+    
     <div class="grid">
       <div class="card" data-id="kathmandu">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/Kathmandu.jpg" alt="Kathmandu">
         <h3>Kathmandu, Nepal</h3>
       </div>
       <div class="card" data-id="lalitpur">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/lalitpur3.jpg" alt="Lalitpur">
         <h3>Lalitpur, Nepal</h3>
       </div>
       <div class="card" data-id="bhaktapur">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/Bhaktapur1.jpg" alt="Bhaktapur">
         <h3>Bhaktapur, Nepal</h3>
       </div>
     </div>
-
+    
     <div class="grid">
       <div class="card" data-id="dhorpatan">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/Dhorpatan.webp" alt="Dhorpatan">
         <h3>Dhorpatan, Nepal</h3>
       </div>
       <div class="card" data-id="lumbini">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/lumbani2.jpg" alt="Lumbini">
         <h3>Lumbini, Nepal</h3>
       </div>
       <div class="card" data-id="pokhara">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/pokhara2.jpg" alt="Pokhara">
         <h3>Pokhara, Nepal</h3>
       </div>
     </div>
-
+    
     <div class="grid">
       <div class="card" data-id="annapurna">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/annapurna-base-camp-trek-2.jpg" alt="Annapurna">
         <h3>Annapurna Base Camp, Nepal</h3>
       </div>
       <div class="card" data-id="mustang">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/mustang.jpg" alt="Mustang">
         <h3>Mustang, Nepal</h3>
       </div>
       <div class="card" data-id="langtang">
-        <div class="favorite-icon">♡</div>
+        <!-- <div class="favorite-icon">♡</div> -->
         <img src="/assects/langtang.webp" alt="Langtang">
         <h3>Langtang, Nepal</h3>
       </div>
     </div>
   </section>
-
+  
   <!-- About -->
   <section id="about" class="section light" data-aos="fade-up">
     <h2>About Us</h2>
     <p>We help travelers plan unforgettable journeys with curated experiences, local tips, and stress-free itineraries.
     </p>
   </section>
-
+  
   <!-- Contact -->
   <footer id="contact" class="footer" data-aos="fade-up">
     <h2>Contact Us</h2>
@@ -196,17 +195,17 @@
     <p><i data-lucide="phone"></i> +977-123456789</p>
   </footer>
 
-
+  
   <!-- External Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
     lucide.createIcons();
-
+    
     // Hero Slider Script
     let slideIndex = 0;
     showSlides();
-
+    
     function showSlides() {
       const slides = document.getElementsByClassName("slide");
       for (let i = 0; i < slides.length; i++) {
@@ -217,13 +216,14 @@
       slides[slideIndex - 1].style.display = "block";
       setTimeout(showSlides, 4000); // 4 seconds
     }
-  </script>
+    </script>
   <script src="script.js"></script>
   <script>
     function show(value) {
       document.querySelector('.textbox').value = value;
     }
-  </script>
+    </script>
+  <script src="app.js" type="module"></script>
 </body>
 
 </html>

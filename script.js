@@ -10,6 +10,7 @@ const toggleDarkMode = () => {
   localStorage.setItem('darkMode', isDark);
 };
 
+//LINKING DYNAMIC DESTINATION DETAILS PAGE WITH INDEX HTML
 // Make destination cards clickable to open details page
 document.querySelectorAll('#destinations .card').forEach(card => {
   card.addEventListener('click', () => {

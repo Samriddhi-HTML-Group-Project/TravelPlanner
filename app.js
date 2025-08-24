@@ -1,22 +1,6 @@
-// Firebase SDK import:
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { auth } from "./firebase.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-
-// Your Firebase config:
-const firebaseConfig = {
-  apiKey: "AIzaSyArRz5wwUPM57peXc-jnBE1niFqBwzUUF4",
-  authDomain: "travelplanner-2d0f9.firebaseapp.com",
-  projectId: "travelplanner-2d0f9",
-  storageBucket: "travelplanner-2d0f9.firebasestorage.app",
-  messagingSenderId: "605600608208",
-  appId: "1:605600608208:web:bc0c3e24c3e20d2ec653d5",
-  measurementId: "G-53239MZGY7"
-};
-
-// Init Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
 // Auth State Management
 const loginBtnEl = document.getElementById("navbar-loginBtn");
