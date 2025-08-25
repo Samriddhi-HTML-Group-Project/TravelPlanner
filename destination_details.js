@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Function to check if this destination is already in user's favorites ---
         const checkFav = async () => {
-            // if (!auth.currentUser) return; // No need to add this line cuz 
-            // i have already make sure that favorites section in the hamburger menu only appears when user is logged in
+            if (!auth.currentUser) return; // No user logged in 
 
             const userDocRef = doc(db, "users", auth.currentUser.uid); // Reference to or pointing to current user's document
             const userDocSnap = await getDoc(userDocRef); //fetching all the fields from users or simply snapping the unique user documents
@@ -77,10 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Handle favorite button click ---
         favBtn.addEventListener('click', async () => {
-            // if (!auth.currentUser) {
-            //     alert("Please log in to save favorites!");
-            //     return;
-            // }
+            if (!auth.currentUser) {
+                alert("Please log in to save favorites!");
+                return;
+            }
 
             const userDocRef = doc(db, "users", auth.currentUser.uid);
 

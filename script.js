@@ -34,7 +34,18 @@ document.getElementById("searchBtn").addEventListener("click", function () {
   }
 });
 
+// Function to redirect
+function goToFavouriteList() {
+  window.location.href = "favouriteList.html";
+}
 
+// Attach the function to the div
+document.addEventListener("DOMContentLoaded", () => {
+  const favDiv = document.getElementById("favLists");
+  if (favDiv) {
+    favDiv.addEventListener("click", goToFavouriteList);
+  }
+});
 
 // Toggle favorite for destinations
 const toggleFavorite = (id, iconElement) => {

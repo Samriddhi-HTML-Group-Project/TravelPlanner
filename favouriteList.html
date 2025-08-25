@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite List</title>
+</head>
+<body>
+    <h1>
+      <span style="color:#ff5a5f; vertical-align:middle;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#ff5a5f" style="vertical-align:middle;margin-right:8px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+      </span>
+      Your Favourite Destinations
+      <span style="color:#ff5a5f; vertical-align:middle;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#ff5a5f" style="vertical-align:middle;margin-left:8px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+      </span>
+    </h1>
+    <div id="favContainer"></div>
+    
+
+    <script type="module">
+    // Reusing initialized instances
+    import { auth, db } from "./firebase.js";
+
+    // 2) Import only what this page needs
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    const favContainer = document.getElementById("favContainer");
+
+    // Small unit to render a clean list of IDs
+    function renderFavIds(ids) {
+        if (!ids || ids.length === 0) {
+        favContainer.innerHTML = `<p>No favourites yet.</p>`;
+        return;
+        }
+        //to capitalize the first letter of the id (literally word)
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+        // .map() transforms each ID into an HTML string for a <li>.
+        // .join('') concatenates those strings into one big string with NO separators.
+        const listHtml = ids.map((id, index) => {
+            return `
+            <li class="fav-item" data-id="${id}">
+                <span class="idx">${index + 1}. </span>
+                <span class="fav-id">${capitalize(id)}</span>
+            </li>
+            `;
+        }).join('');
+
+        favContainer.innerHTML = `
+        <ul class="fav-list">${listHtml}</ul>
+        `;
+    }
+
+    // Listen for login state and load once we know the user
+    onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+        favContainer.innerHTML = `<p>Please log in to see your favourites.</p>`;
+        return;
+        }
+
+        favContainer.innerHTML = `<p>Loading your favourites…</p>`;
+
+        try {
+            // Read the single user doc: users/{uid}
+            const userRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userRef);
+
+            // If doc exists, read 'favs' array, else fallback to an empty list
+            const favIds = userSnap.exists() ? (userSnap.data().favs || []) : [];
+
+            // Render the IDs
+            renderFavIds(favIds);
+
+        } 
+        catch (err) {
+        console.error("Error loading favourites:", err);
+        favContainer.innerHTML = `<p>Couldn’t load favourites. Please try again.</p>`;
+        }
+    });
+    </script>
+
+    <style>
+    /* optional lil’ styling */
+
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e3e6ee 100%);
+      min-height: 100vh;
+      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 2.5rem;
+      margin-bottom: 2.2rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #222;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(255,90,95,0.08), 0 1px 0 #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    #favContainer {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .fav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .fav-list,
+    #favContainer > p {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow:
+        0 8px 32px 0 rgba(52, 90, 180, 0.12),
+        0 1.5px 6px rgba(0,0,0,0.08),
+        0 1.5px 0px #fff inset;
+      padding: 2.2rem 2rem 1.5rem 2rem;
+      margin-top: 0;
+      margin-bottom: 2.5rem;
+      min-width: 320px;
+      min-height: 120px;
+      transition: box-shadow 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fav-item {
+      padding: 12px 18px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #f8fafc 60%, #f1f3f9 100%);
+      box-shadow: 0 2px 8px rgba(52, 90, 180, 0.06);
+      font-size: 1.08rem;
+      display: flex;
+      align-items: center;
+      transition: transform 0.13s, box-shadow 0.13s;
+    }
+    .fav-item:hover {
+      transform: translateY(-2px) scale(1.025);
+      box-shadow: 0 6px 18px rgba(255,90,95,0.13), 0 2px 8px rgba(0,0,0,0.10);
+      background: linear-gradient(90deg, #fff6f6 60%, #ffeaea 100%);
+    }
+
+    .idx {
+      opacity: 0.7;
+      margin-right: 12px;
+      font-weight: 700;
+      color: #ff5a5f;
+      font-size: 1.1em;
+    }
+    .fav-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      color: #222;
+      font-size: 1.08em;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      #favContainer {
+        max-width: 98vw;
+      }
+      .fav-list, #favContainer > p {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+        min-width: 0;
+      }
+      h1 {
+        font-size: 1.3rem;
+        padding: 0 0.3rem;
+      }
+    }
+    </style>
+
+</body>
+</html>
