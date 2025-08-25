@@ -34,7 +34,7 @@ document.getElementById("searchBtn").addEventListener("click", function () {
   }
 });
 
-// Function to redirect
+// Function to redirect to favouriteList.html
 function goToFavouriteList() {
   window.location.href = "favouriteList.html";
 }
