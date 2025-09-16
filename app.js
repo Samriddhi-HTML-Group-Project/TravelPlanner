@@ -1,6 +1,9 @@
 import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
+//for avoiding fraction of delay during auth state check
+const appEl = document.getElementById("app");
+const loadingEl = document.getElementById("loadingScreen");
 
 // Auth State Management
 const loginBtnEl = document.getElementById("navbar-loginBtn");
@@ -11,6 +14,11 @@ const travelStatsEl = document.getElementById("travelStats");
 const favListsEl = document.getElementById("favLists");
 
 onAuthStateChanged(auth, (user) => {
+
+  // auth state resolved, hide loading
+  loadingEl.style.display = "none";
+  appEl.style.display = "block";
+
   if (user) {
     //  User is logged in
     if (loginBtnEl) loginBtnEl.style.display = "none";

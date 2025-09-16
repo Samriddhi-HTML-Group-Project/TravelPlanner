@@ -77,137 +77,50 @@
                 <button onclick="addexpense()" type="button" class="add-expense">Add Expense</button>
             </div>
            <script>
-function addexpense() {
-    let category = document.getElementById("expense-category").value;
-    let amount = document.getElementById("expense-amount").value;
+                function addexpense() {
+                    let category = document.getElementById("expense-category").value;
+                    let amount = document.getElementById("expense-amount").value;
 
-    if (category && amount) {
-        let expenseList = document.getElementById("expense-history");
+                    if (category && amount) {
+                        let expenseList = document.getElementById("expense-history");
 
-        if (expenseList.children.length === 1 && expenseList.children[0].innerText.includes("No expenses")) {
-            expenseList.innerHTML = "";
-        }
+                        if (expenseList.children.length === 1 && expenseList.children[0].innerText.includes("No expenses")) {
+                            expenseList.innerHTML = "";
+                        }
 
-        let li = document.createElement("li");
-        li.style.display = "flex";
-        li.style.justifyContent = "space-between";
+                        let li = document.createElement("li");
+                        li.style.display = "flex";
+                        li.style.justifyContent = "space-between";
 
-        let categorySpan = document.createElement("span");
-        categorySpan.innerText = category.charAt(0).toUpperCase() + category.slice(1);
+                        let categorySpan = document.createElement("span");
+                        categorySpan.innerText = category.charAt(0).toUpperCase() + category.slice(1);
 
-        let amountSpan = document.createElement("span");
-        amountSpan.innerText = amount + " NPR";
+                        let amountSpan = document.createElement("span");
+                        amountSpan.innerText = amount + " NPR";
 
-        li.appendChild(categorySpan);
-        li.appendChild(amountSpan);
+                        li.appendChild(categorySpan);
+                        li.appendChild(amountSpan);
 
-        expenseList.appendChild(li);
+                        expenseList.appendChild(li);
 
-        document.getElementById("expense-category").value = "";
-        document.getElementById("expense-amount").value = "";
+                        document.getElementById("expense-category").value = "";
+                        document.getElementById("expense-amount").value = "";
 
-        let remainingBudgetSpan = document.getElementById("remaining-budget");
-        let currentBudget = parseFloat(remainingBudgetSpan.innerText) || 0;
-        let newBudget = currentBudget - parseFloat(amount);
-        remainingBudgetSpan.innerText = newBudget + " NPR";
-    } else {
-        alert("Please select a category and enter an amount.");
-    }
-}
-</script>
+                        let remainingBudgetSpan = document.getElementById("remaining-budget");
+                        let currentBudget = parseFloat(remainingBudgetSpan.innerText) || 0;
+                        let newBudget = currentBudget - parseFloat(amount);
+                        remainingBudgetSpan.innerText = newBudget + " NPR";
+                    } else {
+                        alert("Please select a category and enter an amount.");
+                    }
+                }
+                </script>
 
             <div class="expense-list">
                 <h3>Expense History</h3>
                 <ul id="expense-history">
                     <li>No expenses recorded yet...</li>
                 </ul>
-                <button class="save-expenses-btn">Save your expenses</button>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Trip planner. All rights reserved.</p>
-            <p>Contact us at <a href="mailto:info@tripplanner.com">info@tripplanner.com</a></p>
-        </div>
-    </footer>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nepal Trip Planner - Budget & Expense Tracker</title>
-    <link rel="stylesheet" href="b_tracker.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Trip planner</h1>
-            <p>"Let the Mountains Move You — Not Your Budget."</p>
-        </div>
-    </header>
-
-    <section class="budget-tracker">
-        <div class="container">
-            <h2>Your Budget</h2>
-            <div class="budget-form">
-                <div class="form-group">
-                    <label for="total-budget">Total Budget (NPR)</label>
-                    <input type="number" id="total-budget" placeholder="e.g., 50000" aria-label="Enter total budget">
-                </div>
-                <div class="form-group">
-                    <label for="trip-duration-select">Trip Duration (Days)</label>
-                    <select id="trip-duration-select" aria-label="Select trip duration" class="select-placeholder">
-                        <option value="" selected hidden>Enter duration of days</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                    </select>
-                </div>
-                <button type="button" class="set-budget">Set Budget</button>
-            </div>
-            <div class="budget-summary">
-                <p>Remaining Budget: <span id="remaining-budget">0 NPR</span></p>
-                <p>Daily Allowance: <span id="daily-allowance">0 NPR</span></p>
-            </div>
-        </div>
-    </section>
-
-    <section class="expense-tracker">
-        <div class="container">
-            <h2>Track Your Expenses</h2>
-            <div class="expense-form">
-                <div class="form-group">
-                    <label for="expense-category">Category</label>
-                    <select id="expense-category" aria-label="Select expense category">
-                        <option value="">Select Category</option>
-                        <option value="food">Food</option>
-                        <option value="transport">Transport</option>
-                        <option value="accommodation">Accommodation</option>
-                        <option value="activities">Activities</option>
-                        <option value="misc">Miscellaneous</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="expense-amount">Amount (NPR)</label>
-                    <input type="number" id="expense-amount" placeholder="e.g., 2000" aria-label="Enter expense amount">
-                </div>
-                <button type="button" class="add-expense">Add Expense</button>
-            </div>
-            <div class="expense-list">
-                <h3>Expense History</h3>
-                <ul id="expense-history">
-                    <li>No expenses recorded yet...</li>
-                </ul>
-                <button class="save-expenses-btn">Save your expenses</button>
             </div>
         </div>
     </section>

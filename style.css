@@ -11,22 +11,39 @@
 .airbnb-dropdown {
   appearance: none;
   background: #fff;
-  border: none;
+  border: 1.5px solid #3498db;
   border-radius: 18px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   padding: 0.85rem 1.5rem;
   font-size: 1.1rem;
   color: #222;
   font-family: inherit;
   font-weight: 500;
   outline: none;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, border 0.2s, transform 0.2s;
   min-width: 180px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+  /* For underline effect */
+  background-clip: padding-box;
 }
-.airbnb-dropdown:focus, .airbnb-dropdown:hover {
-  box-shadow: 0 6px 32px rgba(255,90,95,0.18), 0 2px 8px rgba(0,0,0,0.10);
+.airbnb-dropdown:focus,
+.airbnb-dropdown:hover {
+  box-shadow: 0 8px 32px rgba(52,152,219,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  border-color: #3498db;
   transform: scale(1.04);
+}
+/* Removed empty .airbnb-dropdown ruleset */
+.airbnb-dropdown::after {
+  /* Remove underline effect */
+  display: none !important;
+  content: none !important;
+}
+.airbnb-dropdown:focus::after,
+.airbnb-dropdown:hover::after {
+  /* Remove underline effect */
+  width: 0 !important;
 }
 .airbnb-dropdown option[disabled] {
   color: #aaa;
@@ -41,14 +58,26 @@
   padding: 0.85rem 2.2rem;
   box-shadow: 0 2px 16px rgba(255,90,95,0.13), 0 1.5px 6px rgba(0,0,0,0.08);
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.13s, filter 0.18s;
   outline: none;
   letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
-.airbnb-search-btn:hover, .airbnb-search-btn:focus {
-  background: linear-gradient(90deg, #ffb347 0%, #ff5a5f 100%);
-  box-shadow: 0 8px 32px rgba(255,90,95,0.18), 0 2px 8px rgba(0,0,0,0.10);
-  transform: scale(1.05);
+.airbnb-search-btn:hover,
+.airbnb-search-btn:focus {
+  filter: brightness(1.08) saturate(1.1);
+  transform: translateY(-2px) scale(1.03);
+}
+.airbnb-search-btn::after {
+  /* Remove blue underline effect */
+  display: none !important;
+  content: none !important;
+}
+.airbnb-search-btn:hover::after,
+.airbnb-search-btn:focus::after {
+  /* Remove blue underline effect */
+  width: 0 !important;
 }
 @media (max-width: 600px) {
   .airbnb-search {
@@ -657,7 +686,6 @@ body.dark-mode .dropdown-menu li a:hover {
   .hamburger {
     display: block;
   }
-
   .nav-links {
     display: none;
     flex-direction: column;
@@ -669,15 +697,12 @@ body.dark-mode .dropdown-menu li a:hover {
     padding: 1rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
-
   body.dark-mode .nav-links {
     background-color: #1f1f1f;
   }
-
   .nav-links.active {
     display: flex;
   }
-
   .nav-right {
     flex-direction: column;
     gap: 0.5rem;
@@ -689,66 +714,22 @@ body.dark-mode .dropdown-menu li a:hover {
 .destination-search {
   margin-top: 1.5rem;
 }
-
-.destination-dropdown {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #3498db;
-  border-radius: 30px;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  min-width: 320px;
-  outline: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* Destination Search Styling */
+.destination-search {
+  margin-top: 1.5rem;
 }
 
-.destination-dropdown:hover {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
-  transform: translateY(-2px);
-  border-color: #2980b9;
-}
 
-.destination-dropdown:focus {
-  background: white;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
-  border-color: #2980b9;
+/* Destination Search Styling */
+.destination-search {
+  margin-top: 1.5rem;
 }
+  
 
-.destination-dropdown option {
-  background: white;
-  color: #333;
-  padding: 10px;
-  font-weight: 400;
-}
 
-/* Dark mode destination search */
-body.dark-mode .destination-dropdown {
-  background: rgba(44, 44, 44, 0.95);
-  color: #f1f1f1;
-  border-color: #5dade2;
-  box-shadow: 0 4px 15px rgba(93, 173, 226, 0.2);
-}
-
-body.dark-mode .destination-dropdown:hover {
-  background: rgba(44, 44, 44, 0.98);
-  box-shadow: 0 6px 20px rgba(93, 173, 226, 0.3);
-  border-color: #85c1e9;
-}
-
-body.dark-mode .destination-dropdown:focus {
-  background: #2c2c2c;
-  box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.3);
-}
-
-body.dark-mode .destination-dropdown option {
-  background: #2c2c2c;
-  color: #f1f1f1;
+/* Destination Search Styling */
+.destination-search {
+  margin-top: 1.5rem;
 }
 
 

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Note Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travelNotesSection.css">
+</head>
+<body>
+  <div class="note-section-container">
+    <div class="note-topbar">
+      <div class="left-top">
+        <h1 class="note-destination" id="destinationName">Destination Name</h1>
+      </div>
+      <div class="right-top">
+        <button class="note-save-btn" id="saveNoteBtn">Save Note</button>
+      </div>
+    </div>
+
+    <div class="note-meta">
+      <span class="note-last-updated" id="lastUpdated">Last updated: —</span>
+    </div>
+
+    <div class="note-main">
+      <textarea class="note-textarea" id="noteTextarea" placeholder="Write your travel notes here..."></textarea>
+    </div>
+  </div>
+
+  <!-- Module script: handheld logic + Firestore operations (assumes ./firebase.js exports auth & db) -->
+  <script type="module">
+    /* ========= Assumptions =========
+      - You have a file ./firebase.js that exports `auth` and `db` (Modular Firebase v9 style).
+      - If your firebase SDK version differs, adjust the CDN import versions below to match.
+      - Firestore path used: users/{uid}/travelNotes/{destinationName}
+      ================================ */
+
+    // import auth/db from your firebase.js (should be a module)
+    import { auth, db } from './firebase.js';
+
+    // import small helpers from firebase CDN (v9 modular functions)
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    // ---------- DOM refs ----------
+    const destinationNameEl = document.getElementById('destinationName');
+    const lastUpdatedEl = document.getElementById('lastUpdated');
+    const textarea = document.getElementById('noteTextarea');
+    const saveBtn = document.getElementById('saveNoteBtn');
+    
+
+    // ---------- Track state ----------
+    const params = new URLSearchParams(window.location.search);
+    const destination = params.get('dest') || 'Unknown Destination'; // page-specific destination
+    destinationNameEl.textContent = destination;
+
+    let currentUser = null;       // will hold firebase user object after auth
+    let unsavedChanges = false;   // true when textarea modified and not saved
+    let lastLoadedContent = ''; // hold the content we last loaded from Firestore ('' if none)
+
+    // ---------- UI helpers ----------
+    function setSaveEnabled(enabled) {
+      saveBtn.disabled = !enabled;
+      saveBtn.style.opacity = enabled ? '1' : '0.6';
+    //   saveBtn.title = enabled ? 'Save your note' : 'Log in to save notes';
+      if (!enabled) saveBtn.textContent = 'Login to save';
+      else saveBtn.textContent = 'Save Note';
+    }
+
+    // Update UI for the lastUpdated display
+    function updateLastUpdatedDisplay(timestamp) {
+      // timestamp may be:
+      // - a Firestore Timestamp object (has .toDate())
+      // - a JS Date
+      // - a string
+      // - null/undefined
+      if (!timestamp) {
+        lastUpdatedEl.textContent = 'Last updated: Never';
+        return;
+      }
+
+      // If Firestore Timestamp object (has toDate())
+      if (typeof timestamp.toDate === 'function') {
+        const d = timestamp.toDate();               // Firestore Timestamp -> JS Date
+        lastUpdatedEl.textContent = 'Last updated: ' + d.toLocaleString();
+        return;
+      }
+
+      // If a JS Date object
+      if (timestamp instanceof Date) {
+        lastUpdatedEl.textContent = 'Last updated: ' + timestamp.toLocaleString();
+        return;
+      }
+
+      // If a number (milliseconds) or string
+      if (typeof timestamp === 'number') {
+        lastUpdatedEl.textContent = 'Last updated: ' + new Date(timestamp).toLocaleString();
+        return;
+      }
+      // fallback: convert to string
+      lastUpdatedEl.textContent = 'Last updated: ' + String(timestamp);
+    }
+
+
+    // Auto-resize text area to content
+    function autoResize() {
+      // Reason: when content is removed, scrollHeight may be smaller than current height,
+      // so set to 'auto' first so it can shrink, then set to scrollHeight.
+      textarea.style.height = 'auto'; // reset height (lets the element shrink)
+      // scrollHeight is the full height of the content. Add small padding (4px) for breathing room.
+      textarea.style.height = (textarea.scrollHeight + 4) + 'px';
+    }
+
+    // ---------- Firestore helpers ----------
+    // Path: users/{uid}/travelNotes/{destination}
+    function noteDocRef(uid) {
+      return doc(db, 'users', uid, 'travelNotes', destination);
+    }
+
+    // ----- Load / Save logic -----
+
+    async function loadNoteForUser(uid) {
+    
+        // --- show temporary Loading... text ---
+        lastUpdatedEl.textContent = 'Last updated: Loading...';
+        textarea.value = 'Loading...';
+
+      try {
+        const ref = noteDocRef(uid);
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          const data = snap.data();
+          lastLoadedContent = data.content ?? '';
+          textarea.value = lastLoadedContent;
+          updateLastUpdatedDisplay(data.lastUpdated || null);
+          unsavedChanges = false;
+          autoResize();
+        } else {
+          // no saved note yet
+          lastLoadedContent = '';
+          textarea.value = '';
+          updateLastUpdatedDisplay(null);
+        }
+      } catch (err) {
+        console.error('Error loading note:', err);
+        lastUpdatedEl.textContent = 'Last updated: (error loading)';
+      }
+    }
+
+    // Save only when something has changed (compare current textarea with lastLoadedContent)
+    async function saveNoteForUser(uid) {
+
+    // Normalize comparison: trim to avoid saving only whitespace differences
+      const currentTrim = textarea.value.trim();
+      const loadedTrim  = (lastLoadedContent ?? '').trim();
+
+      if (currentTrim === loadedTrim) {
+        // nothing changed — skip the write
+        // Small UX: tell the user nothing changed
+        alert('No changes to save.');
+        return;
+      }
+
+    
+      const ref = noteDocRef(uid);
+      // setDoc will create/overwrite the document; serverTimestamp used for lastUpdated
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving…';
+        await setDoc(ref, {
+          content: textarea.value,
+          lastUpdated: serverTimestamp()
+        }, { merge: true }); // merge: true keeps other fields if you add later
+        // update UI to show timestamp (use local time until Firestore roundtrip returns)
+
+        //we are giving args to setDoc(reference, fields i,e, content and lastUpdated, merge for merging fields later on)
+
+        /*
+        Firestore structure for travel notes:
+        users/{uid}/travelNotes/{destination}
+            - content: string
+            - lastUpdated: Timestamp
+        */
+
+        // Re-read the doc to fetch the server-generated timestamp and confirm saved content
+        const savedSnap = await getDoc(ref);
+        if (savedSnap.exists()) {
+          const savedData = savedSnap.data();
+          lastLoadedContent = savedData.content ?? '';
+          updateLastUpdatedDisplay(savedData.lastUpdated ?? new Date());
+          unsavedChanges = false;
+        } else {
+          // unlikely, but set as saved locally
+          lastLoadedContent = textarea.value;
+          updateLastUpdatedDisplay(new Date());
+          unsavedChanges = false;
+        }
+
+        saveBtn.textContent = 'Save Note';
+        saveBtn.disabled = false;
+        alert('Your note is saved successfully!');
+        // small visual feedback — replace with nicer toast if you want
+        // (optional) alert('Saved!');
+      } catch (err) {
+        console.error('Error saving note:', err);
+        alert('Failed to save note. Check console for details.');
+        saveBtn.textContent = 'Save Note';
+        saveBtn.disabled = false;
+      }
+    }
+
+    // ---------- Auth & initial load ----------
+    // Listen for auth state changes. Once user is known, update UI and load the note if logged in.
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (user) {
+        setSaveEnabled(true);
+        // Load that user's note for this destination
+        await loadNoteForUser(user.uid);
+      } else {
+        // Not logged in: disable save and leave a hint in lastUpdated area
+        setSaveEnabled(false);
+        lastLoadedContent = ''; // clear loaded content for comparison
+        lastUpdatedEl.textContent = 'Last updated: — (log in to load/save your notes)';
+        // unsavedChanges remains tracked.
+      }
+    });
+
+    // ---------- UI events ----------
+    textarea.addEventListener('input', () => {
+      unsavedChanges = true;
+      autoResize();
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      if (!currentUser) {
+        // If not logged in, go to login page (you can change the path)
+        const go = confirm('You must be logged in to save notes. Go to login page now?');
+        if (go) window.location.href = 'login.html';
+        return;
+      }
+      await saveNoteForUser(currentUser.uid);
+    });
+
+    // ----- Browser controls protection -----
+
+    // To warn user of unsaved changes if they try to leave/reload/navigate away
+    // beforeunload: triggers for refresh/close/back in most browsers — shows native dialog
+    window.addEventListener('beforeunload', (e) => {
+      if (unsavedChanges) {
+        e.preventDefault();
+        e.returnValue = ''; // chrome requires returnValue to be set
+      }
+    });
+   
+    // run autoResize once at page load (in case textarea has content)
+    window.addEventListener('load', autoResize);
+
+    // End of module script
+  </script>
+</body>
+</html>

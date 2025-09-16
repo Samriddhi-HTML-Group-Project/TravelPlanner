@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travelNotes.css">
+</head>
+<body>
+  <div class="notes-container">
+    <header>
+      <h1 class="notes-title">Your Travel Notes</h1>
+    </header>
+    <nav class="notes-tabs">
+      <button class="notes-tab">Kathmandu</button>
+      <button class="notes-tab">Bhaktapur</button>
+      <button class="notes-tab">Lalitpur</button>
+      <button class="notes-tab">Dhorpatan</button>
+      <button class="notes-tab">Lumbini</button>
+      <button class="notes-tab">Pokhara</button>
+      <button class="notes-tab">Annapurna Base Camp</button>
+      <button class="notes-tab">Mustang</button>
+      <button class="notes-tab">Langtang</button>
+    </nav>
+  </div>
+
+  <!-- Inline JS (not a module) — simple navigation handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Attach click listeners to each tab button.
+      document.querySelectorAll('.notes-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dest = btn.textContent.trim();
+          // navigate to the single reusable section page, passing dest in querystring
+          window.location.href = `travelNotesSection.html?dest=${encodeURIComponent(dest)}`;
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>

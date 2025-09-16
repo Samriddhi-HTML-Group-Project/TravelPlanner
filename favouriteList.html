@@ -6,6 +6,8 @@
     <title>Favourite List</title>
 </head>
 <body>
+  <div id="fav-app" style="display:none">
+
     <h1>
       <span style="color:#ff5a5f; vertical-align:middle;">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="#ff5a5f" style="vertical-align:middle;margin-right:8px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
@@ -16,7 +18,12 @@
       </span>
     </h1>
     <div id="favContainer"></div>
-    
+  </div>
+    <div id="fav-loadingScreen"
+       style="display:flex;align-items:center;justify-content:center;
+              height:100vh;font-family:sans-serif;font-size:1.2rem;">
+    Loading…
+  </div>
 
     <script type="module">
     // Reusing initialized instances
@@ -25,6 +32,10 @@
     // 2) Import only what this page needs
     import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
     import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+    //for avoiding fraction of delay during auth state check
+    const favAppEl = document.getElementById("fav-app");
+    const favLoadingEl = document.getElementById("fav-loadingScreen");
 
     const favContainer = document.getElementById("favContainer");
 
@@ -56,6 +67,12 @@
 
     // Listen for login state and load once we know the user
     onAuthStateChanged(auth, async (user) => {
+
+
+      // auth state resolved, hide loading
+      favLoadingEl.style.display = "none";
+      favAppEl.style.display = "block";
+
         if (!user) {
         favContainer.innerHTML = `<p>Please log in to see your favourites.</p>`;
         return;

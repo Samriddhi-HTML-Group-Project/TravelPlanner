@@ -7,6 +7,11 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/f
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    //for avoiding fraction of delay during auth state check
+    const destnAppEl = document.getElementById("destn-app");
+    const destnLoadingEl = document.getElementById("destn-loadingScreen");
+
     const params = new URLSearchParams(window.location.search);
     const destinationId = params.get("id");
     const destination = Destinations.find(dest => dest.id === destinationId);
@@ -71,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Call checkFav whenever auth state changes ---
         onAuthStateChanged(auth, () => {
+            destnLoadingEl.style.display = "none";
+            destnAppEl.style.display = "block";
             checkFav(); // to check the fav status in firebase and sync it with firestore database
         });
 

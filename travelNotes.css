@@ -1,0 +1,84 @@
+body {
+  background: #f6f8fa;
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.notes-container {
+  max-width: 420px;
+  margin: 3.5rem auto 0 auto;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(52, 90, 180, 0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+}
+
+.notes-title {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.5px;
+}
+
+.notes-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.notes-tab {
+  background: #f8fafc;
+  color: #333;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.95rem 1.5rem;
+  font-size: 1.08rem;
+  font-family: inherit;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(52, 90, 180, 0.10), 0 1.5px 0px #fff inset;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.13s;
+  display: block;
+  text-align: left;
+}
+
+.notes-tab:hover,
+.notes-tab:focus {
+  background: #fff6f6;
+  color: #ff5a5f;
+  box-shadow: 0 6px 18px rgba(255,90,95,0.13), 0 2px 8px rgba(0,0,0,0.10);
+  transform: translateY(-2px) scale(1.025);
+}
+
+@media (min-width: 600px) {
+  .notes-tabs {
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .notes-container {
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .notes-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .notes-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .notes-tabs {
+    gap: 0.7rem;
+  }
+  .notes-tab {
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+  }
+}
